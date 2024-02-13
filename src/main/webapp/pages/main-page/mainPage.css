@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Rocher';
+    src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
+@font-palette-values --Mint {
+    font-family: Rocher;
+    base-palette: 7;
+}
+@font-palette-values --Grays {
+    font-family: Rocher;
+    base-palette: 9;
+}
+
+body {
+    background-color: rgba(173, 255, 47, 0.5);
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    align-items: center;
+    justify-content: center;
+    /*background-color: #ffdd00;*/
+    /*border: 2px solid black;*/
+    height: 20%;
+    width: auto;
+}
+
+.header div {
+    text-align: center;
+    height: 60%;
+}
+
+.header .mint {
+    font-family: 'Rocher', sans-serif;
+    font-palette: --Mint;
+}
+
+
+.header h1 a {
+    text-decoration: none;
+}
+.header .ordinal a {
+    color: green;
+}
+
+.header .ordinary {
+    font-family: 'Rocher', sans-serif;
+    padding-top: 5.7%;
+    font-palette: --Mint;
+    text-align: center;
+}
+
+.header h1 img {
+    height: 64px;
+    width: 64px;
+}

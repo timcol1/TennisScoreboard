@@ -7,4 +7,13 @@
 
     <display-name>Tennis Scoreboard</display-name>
 
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <jsp-file>/pages/main-page/mainPage.jsp</jsp-file>
+    </servlet>
+    <!--mapping-->
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/main-page</url-pattern>
+    </servlet-mapping>
 </web-app>
