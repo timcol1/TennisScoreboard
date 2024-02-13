@@ -17,7 +17,7 @@ body {
 
 .header {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 30% 23% 23% 23%;
     align-items: center;
     justify-content: center;
     /*background-color: #ffdd00;*/
@@ -28,10 +28,11 @@ body {
 
 .header div {
     text-align: center;
-    height: 60%;
+    height: 70%;
 }
 
 .header .mint {
+    height: 10%;
     font-family: 'Rocher', sans-serif;
     font-palette: --Mint;
 }
@@ -46,8 +47,8 @@ body {
 
 .header .ordinary {
     font-family: 'Rocher', sans-serif;
-    padding-top: 5.7%;
     font-palette: --Mint;
+    padding-top: 32px;
     text-align: center;
 }
 
