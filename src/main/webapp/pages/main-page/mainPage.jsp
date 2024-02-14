@@ -18,12 +18,34 @@
     <div><h1 class="ordinary"><a href="http://localhost:8080/new-match">New Match</a></h1></div>
     <div><h1 class="ordinary"><a href="http://localhost:8080/matches">Matches</a></h1></div>
     <div><h1 class="ordinary"><%
-        LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, HH:mm", Locale.ENGLISH);
-        out.print(currentDateTime.format(formatter));
+        out.print(LocalDateTime.now().format(formatter));
     %>
     </h1></div>
 </header>
 
+
+<main>
+    <div class="button_container">
+        <div class="button_new_match">
+            <a href="http://localhost:8080/new-match">New Match</a>
+        </div>
+
+        <div class="button_matches">
+            <a href="http://localhost:8080/matches">Matches</a>
+        </div>
+    </div>
+</main>
+
+
+<footer>
+    <div class="first_block">
+        <p>© 2024 Avlyakulov Timur</p>
+    </div>
+    <div class="sec_block">
+        <a href="https://github.com/timcol1">Git</a>
+        <a href="https://www.linkedin.com/in/timmawv/">Linkedin</a>
+    </div>
+</footer>
 </body>
 </html>

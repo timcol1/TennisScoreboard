@@ -2,27 +2,37 @@
     font-family: 'Rocher';
     src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
 }
+
 @font-palette-values --Mint {
     font-family: Rocher;
     base-palette: 7;
 }
+
 @font-palette-values --Grays {
     font-family: Rocher;
     base-palette: 9;
 }
 
 body {
-    background-color: rgba(173, 255, 47, 0.5);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+body, .header, main, footer {
+    /*border: 2px solid black;*/
+}
+
+
 .header {
+    background-color: rgba(173, 255, 47, 0.6);
+    height: 15%;
+    flex-shrink: 0;
     display: grid;
     grid-template-columns: 30% 23% 23% 23%;
     align-items: center;
     justify-content: center;
-    /*background-color: #ffdd00;*/
-    /*border: 2px solid black;*/
-    height: 20%;
     width: auto;
 }
 
@@ -41,6 +51,7 @@ body {
 .header h1 a {
     text-decoration: none;
 }
+
 .header .ordinal a {
     color: green;
 }
@@ -48,11 +59,79 @@ body {
 .header .ordinary {
     font-family: 'Rocher', sans-serif;
     font-palette: --Mint;
-    padding-top: 32px;
+    margin-top: 54px;
     text-align: center;
 }
 
 .header h1 img {
     height: 64px;
     width: 64px;
+}
+
+
+main {
+    flex-grow: 1;
+    background-image: url('/img/court.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: -1px;
+}
+
+main .button_container {
+    height: 18%;
+    display: flex;
+    grid-template-columns: 40% 40%;
+}
+
+
+main .button_new_match, .button_matches {
+    position: relative;
+    padding: 10px;
+    background-color: rgba(41, 41, 239, 0.7);
+    border: 5px solid yellow;
+    border-radius: 25px;
+    height: 35px;
+    margin-left: 20%;
+    left: 10%;
+    align-self: center;
+}
+
+main div a {
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+}
+
+
+footer {
+    height: auto;
+    background-color: #1e1e1e;
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+footer div {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+footer .first_block p {
+    font-family: 'Serif', sans-serif;
+    font-size: 40px;
+    color: gray;
+    margin-left: 10%;
+}
+
+footer .sec_block {
+    margin-left: 20%;
+}
+
+footer .sec_block a {
+    text-decoration: none;
+    font-family: 'Serif', sans-serif;
+    font-size: 40px;
+    color: gray;
+    margin-left: 15%;
 }
