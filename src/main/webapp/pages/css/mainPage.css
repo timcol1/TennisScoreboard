@@ -77,30 +77,30 @@ main {
     margin-bottom: -1px;
 }
 
-main .button_container {
-    height: 18%;
-    display: flex;
-    grid-template-columns: 40% 40%;
-}
+/*main .button_container {*/
+/*    height: 18%;*/
+/*    display: flex;*/
+/*    grid-template-columns: 40% 40%;*/
+/*}*/
 
 
-main .button_new_match, .button_matches {
-    position: relative;
-    padding: 10px;
-    background-color: rgba(41, 41, 239, 0.7);
-    border: 5px solid yellow;
-    border-radius: 25px;
-    height: 35px;
-    margin-left: 20%;
-    left: 10%;
-    align-self: center;
-}
+/*main .button_new_match, .button_matches {*/
+/*    position: relative;*/
+/*    padding: 10px;*/
+/*    background-color: rgba(41, 41, 239, 0.7);*/
+/*    border: 5px solid yellow;*/
+/*    border-radius: 25px;*/
+/*    height: 35px;*/
+/*    margin-left: 20%;*/
+/*    left: 10%;*/
+/*    align-self: center;*/
+/*}*/
 
-main div a {
-    text-decoration: none;
-    font-size: 30px;
-    color: white;
-}
+/*main div a {*/
+/*    text-decoration: none;*/
+/*    font-size: 30px;*/
+/*    color: white;*/
+/*}*/
 
 
 footer {

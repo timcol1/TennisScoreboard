@@ -1,0 +1,51 @@
+main form {
+    height: 100%;
+    width: auto;
+}
+
+main .wrapper {
+    background-color: darkgreen;
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin-top: 0;
+}
+
+main .wrapper div {
+    line-height: 35px;
+}
+
+
+main div {
+    margin: 5px auto auto auto;
+}
+
+main label {
+    font-size: 24px;
+    color: white;
+}
+
+main div p {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+}
+main .sign {
+    display: flex;
+    grid-template-columns: 50% 50%;
+
+}
+main .sign div{
+    margin-right: 80px;
+
+}
+
+
+main form button {
+    margin-top: 0;
+    background-color: blue;
+    color: white;
+    font-size: 25px;
+    border-radius: 10px;
+}

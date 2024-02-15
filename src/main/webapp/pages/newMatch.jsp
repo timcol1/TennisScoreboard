@@ -1,18 +1,19 @@
-<%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="eu">
 <head>
-    <title>Tennis-ScoreBoard</title>
-    <link rel="shortcut icon" href="../../img/tennis_ball.png"/>
+    <title>New Match</title>
+    <link rel="shortcut icon" href="../img/tennis_ball.png"/>
     <style>
-        <%@include file="/pages/main-page/mainPage.css" %>
+        <%@include file="/pages/css/mainPage.css" %>
+        <%@include file="/pages/css/newMatch.css" %>
     </style>
 </head>
 <body>
 <header class="header">
-    <div><h1 class="mint"><a href="http://localhost:8080/main-page"><img src="../../img/tennis_racket.png"
+    <div><h1 class="mint"><a href="http://localhost:8080/main-page"><img src="../img/tennis_racket.png"
                                                                          alt="tennis racket">Tennis Scoreboard</a></h1>
     </div>
     <div><h1 class="ordinary"><a href="http://localhost:8080/new-match">New Match</a></h1></div>
@@ -26,17 +27,27 @@
 
 
 <main>
-    <div class="button_container">
-        <div class="button_new_match">
-            <a href="http://localhost:8080/new-match">New Match</a>
+    <form method="POST" action="/checkPlayerName">
+        <div class="wrapper">
+            <div>
+                <label for="Player1"><b>Enter Player 1 name</b>
+                    <input id="Player1" type="text" required>
+                </label>
+            </div>
+            <div class="sign">
+                <div>
+                    <p><b>New Match</b></p>
+                </div>
+                <button type="submit"><b>START</b></button>
+            </div>
+            <div>
+                <label for="Player2"><b>Enter Player 2 name</b>
+                    <input id="Player2" type="text" required>
+                </label>
+            </div>
         </div>
-
-        <div class="button_matches">
-            <a href="http://localhost:8080/matches">Matches</a>
-        </div>
-    </div>
+    </form>
 </main>
-
 
 <footer>
     <div class="first_block">
