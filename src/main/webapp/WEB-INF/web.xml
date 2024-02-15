@@ -7,7 +7,7 @@
 
     <display-name>Tennis Scoreboard</display-name>
 
-<!--    Main Page-->
+    <!--Main Page-->
     <servlet>
         <servlet-name>MainPage</servlet-name>
         <jsp-file>/pages/mainPage.jsp</jsp-file>
@@ -17,7 +17,7 @@
         <url-pattern>/main-page</url-pattern>
     </servlet-mapping>
 
-<!--    New Match-->
+    <!--New Match-->
     <servlet>
         <servlet-name>NewMatch</servlet-name>
         <jsp-file>/pages/newMatch.jsp</jsp-file>
@@ -26,5 +26,16 @@
     <servlet-mapping>
         <servlet-name>NewMatch</servlet-name>
         <url-pattern>/new-match</url-pattern>
+    </servlet-mapping>
+
+    <!--Match-->
+    <servlet>
+        <servlet-name>Match</servlet-name>
+        <jsp-file>/pages/match.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Match</servlet-name>
+        <url-pattern>/match</url-pattern>
     </servlet-mapping>
 </web-app>

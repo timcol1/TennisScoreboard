@@ -1,14 +1,14 @@
-<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.LocalDateTime" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="eu">
+<html>
 <head>
-    <title>New Match</title>
+    <title>Match</title>
     <link rel="shortcut icon" href="../img/tennis_ball.png"/>
     <style>
         <%@include file="/pages/css/mainPage.css" %>
-        <%@include file="/pages/css/newMatch.css" %>
+        <%@include file="/pages/css/match.css" %>
     </style>
 </head>
 <body>
@@ -24,31 +24,49 @@
     %>
     </h1></div>
 </header>
-
-
 <main>
-    <form method="POST" action="/createMatch">
-        <div class="wrapper">
-            <div>
-                <label for="Player1"><b>Enter Player 1 name</b>
-                    <input id="Player1" name="player1" type="text" required>
-                </label>
-            </div>
-            <div class="sign">
-                <div>
-                    <p><b>New Match</b></p>
-                </div>
-                <button type="submit"><b>START</b></button>
-            </div>
-            <div>
-                <label for="Player2"><b>Enter Player 2 name</b>
-                    <input id="Player2" name="player2" type="text" required>
-                </label>
-            </div>
-        </div>
-    </form>
+    <table>
+        <thead>
+        <tr>
+            <th>CODE</th>
+            <th>STOCK</th>
+            <th>CAP</th>
+            <th>INCH</th>
+            <th>BOX TYPE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>CES-9000</td>
+            <td>50mt</td>
+            <td>9mm</td>
+            <td>1/2"</td>
+            <td>Kangal / Coil</td>
+        </tr>
+        <tr>
+            <td>CES-9000</td>
+            <td>50mt</td>
+            <td>9mm</td>
+            <td>1/2"</td>
+            <td>Kangal / Coil</td>
+        </tr>
+        <tr>
+            <td>CES-9000</td>
+            <td>50mt</td>
+            <td>9mm</td>
+            <td>1/2"</td>
+            <td>Kangal / Coil</td>
+        </tr>
+        <tr>
+            <td>CES-9000</td>
+            <td>50mt</td>
+            <td>9mm</td>
+            <td>1/2"</td>
+            <td>Kangal / Coil</td>
+        </tr>
+        </tbody>
+    </table>
 </main>
-
 <footer>
     <div class="first_block">
         <p>© 2024 Avlyakulov Timur</p>
