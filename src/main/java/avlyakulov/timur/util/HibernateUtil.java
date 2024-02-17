@@ -15,10 +15,11 @@ public class HibernateUtil {
         Properties hibernateProperty = new Properties();
         hibernateProperty.load(classLoader.getResourceAsStream("postgres.properties"));
 
+
         return new Configuration()
+                .addProperties(hibernateProperty)
                 .addAnnotatedClass(Person.class)
                 .addAnnotatedClass(PersonTask.class)
-                .addProperties(hibernateProperty)
                 .buildSessionFactory();
     }
 }
