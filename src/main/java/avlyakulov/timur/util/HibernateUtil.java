@@ -2,6 +2,8 @@ package avlyakulov.timur.util;
 
 import avlyakulov.timur.other.model.Person;
 import avlyakulov.timur.other.model.PersonTask;
+import avlyakulov.timur.other.relation.Employee;
+import avlyakulov.timur.other.relation.EmployeeTask;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

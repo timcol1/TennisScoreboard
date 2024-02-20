@@ -15,9 +15,5 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
-
-        <mapping package="avlyakulov.timur.other.model">
-
-        </mapping>
     </session-factory>
 </hibernate-configuration>
