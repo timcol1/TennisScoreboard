@@ -24,29 +24,29 @@
     %>
     </h1></div>
 </header>
-
+<form method="POST" action="/createMatch">
+    <div class="wrapper">
+        <div>
+            <label for="Player1"><b>Enter Player 1 name</b>
+                <input id="Player1" name="player1" type="text" required>
+            </label>
+        </div>
+        <div class="sign">
+            <div>
+                <p><b>New Match</b></p>
+            </div>
+            <button type="submit"><b>START</b></button>
+        </div>
+        <div>
+            <label for="Player2"><b>Enter Player 2 name</b>
+                <input id="Player2" name="player2" type="text" required>
+            </label>
+        </div>
+    </div>
+</form>
 
 <main>
-    <form method="POST" action="/createMatch">
-        <div class="wrapper">
-            <div>
-                <label for="Player1"><b>Enter Player 1 name</b>
-                    <input id="Player1" name="player1" type="text" required>
-                </label>
-            </div>
-            <div class="sign">
-                <div>
-                    <p><b>New Match</b></p>
-                </div>
-                <button type="submit"><b>START</b></button>
-            </div>
-            <div>
-                <label for="Player2"><b>Enter Player 2 name</b>
-                    <input id="Player2" name="player2" type="text" required>
-                </label>
-            </div>
-        </div>
-    </form>
+
 </main>
 
 <footer>

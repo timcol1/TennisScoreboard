@@ -12,8 +12,9 @@
 </head>
 <body>
 <header class="header">
-    <div><h1 class="mint"><a href="http://localhost:8080/main-page"><img src="../img/tennis_racket.png"
-                                                                         alt="tennis racket">Tennis Scoreboard</a></h1>
+    <div>
+        <h1 class="mint"><a href="http://localhost:8080/main-page"><img src="../img/tennis_racket.png"
+                                                                        alt="tennis racket">Tennis Scoreboard</a></h1>
     </div>
     <div><h1 class="ordinary"><a href="http://localhost:8080/new-match">New Match</a></h1></div>
     <div><h1 class="ordinary"><a href="http://localhost:8080/matches">Matches</a></h1></div>
@@ -26,15 +27,7 @@
 
 
 <main>
-<%--    <div class="button_container">--%>
-<%--        <div class="button_new_match">--%>
-<%--            <a href="http://localhost:8080/new-match">New Match</a>--%>
-<%--        </div>--%>
 
-<%--        <div class="button_matches">--%>
-<%--            <a href="http://localhost:8080/matches">Matches</a>--%>
-<%--        </div>--%>
-<%--    </div>--%>
 </main>
 
 

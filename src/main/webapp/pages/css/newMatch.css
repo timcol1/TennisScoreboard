@@ -7,54 +7,52 @@ html, body {
     box-sizing: border-box;
 }
 
-main form {
-    height: 100%;
+form {
+    margin: 0;
     width: auto;
 }
 
-main .wrapper {
+.wrapper {
     background-color: darkgreen;
     width: auto;
-    height: auto;
+    min-height: auto;
     display: grid;
     grid-template-columns: 33% 33% 33%;
     margin-top: 0;
 }
 
-main .wrapper div {
+.wrapper div {
     line-height: 35px;
 }
 
 
-main div {
+div {
     margin: 5px auto auto auto;
 }
 
-main label {
+label {
     font-size: 24px;
     color: white;
 }
 
-main div p {
+div p {
     font-size: 24px;
     margin: 0;
     color: white;
 }
-main .sign {
+.sign {
     display: flex;
     grid-template-columns: 50% 50%;
-
 }
-main .sign div{
+.sign div{
     margin-right: 80px;
-
 }
 
 
-main form button {
+form button {
     margin-top: 0;
     background-color: blue;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     border-radius: 10px;
 }

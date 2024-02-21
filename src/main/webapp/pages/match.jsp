@@ -24,49 +24,52 @@
     %>
     </h1></div>
 </header>
+
+<div class="wrapper">
+    <div class="player player1">
+        <div class="name">
+            <h1>Player</h1>
+            <h1>${player1}</h1>
+        </div>
+        <div class="sets">
+            <h1>Sets</h1>
+            <h1>0</h1>
+        </div>
+        <div class="games">
+            <h1>Games</h1>
+            <h1>0</h1>
+        </div>
+    </div>
+    <div class="sign">
+        <h1>Match score</h1>
+    </div>
+    <div class="player player2">
+        <div class="games">
+            <h1>Games</h1>
+            <h1>0</h1>
+        </div>
+        <div class="sets">
+            <h1>Sets</h1>
+            <h1>0</h1>
+        </div>
+        <div class="name">
+            <h1>Player</h1>
+            <h1>${player2}</h1>
+        </div>
+    </div>
+</div>
+
 <main>
-    <table>
-        <thead>
-        <tr>
-            <th>CODE</th>
-            <th>STOCK</th>
-            <th>CAP</th>
-            <th>INCH</th>
-            <th>BOX TYPE</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>CES-9000</td>
-            <td>50mt</td>
-            <td>9mm</td>
-            <td>1/2"</td>
-            <td>Kangal / Coil</td>
-        </tr>
-        <tr>
-            <td>CES-9000</td>
-            <td>50mt</td>
-            <td>9mm</td>
-            <td>1/2"</td>
-            <td>Kangal / Coil</td>
-        </tr>
-        <tr>
-            <td>CES-9000</td>
-            <td>50mt</td>
-            <td>9mm</td>
-            <td>1/2"</td>
-            <td>Kangal / Coil</td>
-        </tr>
-        <tr>
-            <td>CES-9000</td>
-            <td>50mt</td>
-            <td>9mm</td>
-            <td>1/2"</td>
-            <td>Kangal / Coil</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="buttons">
+        <div>
+            <button class="button1">Player 1 wins point!</button>
+        </div>
+        <div>
+            <button class="button2">Player 2 wins point!</button>
+        </div>
+    </div>
 </main>
+
 <footer>
     <div class="first_block">
         <p>© 2024 Avlyakulov Timur</p>
