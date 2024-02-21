@@ -56,12 +56,10 @@ main {
 
 .buttons .button1 {
     position: absolute;
-    top: 30%;
     left: 25%;
 }
 
 .buttons .button2 {
     position: absolute;
-    top: 30%;
     right: 25%;
 }

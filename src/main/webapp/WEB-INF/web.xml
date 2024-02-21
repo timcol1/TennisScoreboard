@@ -25,7 +25,7 @@
 
     <servlet-mapping>
         <servlet-name>NewMatch</servlet-name>
-        <url-pattern>/new-match</url-pattern>
+        <url-pattern>/new-match.jsp</url-pattern>
     </servlet-mapping>
 
     <!--Match-->
@@ -36,6 +36,6 @@
 
     <servlet-mapping>
         <servlet-name>Match</servlet-name>
-        <url-pattern>/match</url-pattern>
+        <url-pattern>/match-score</url-pattern>
     </servlet-mapping>
 </web-app>

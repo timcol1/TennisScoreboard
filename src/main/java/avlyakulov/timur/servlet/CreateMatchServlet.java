@@ -12,8 +12,15 @@ import java.io.IOException;
 
 
 @Slf4j
-@WebServlet(urlPatterns = "/createMatch")
+@WebServlet(urlPatterns = "/new-match")
 public class CreateMatchServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/new-match.jsp");
+        dispatcher.forward(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,7 +30,7 @@ public class CreateMatchServlet extends HttpServlet {
 
         req.setAttribute("player1", player1);
         req.setAttribute("player2", player2);
-        req.getRequestDispatcher("/match").forward(req, resp);
 
+        resp.sendRedirect("/match-score?uuid=" + "sdjkfasldkjffjsadlfjasdl");
     }
 }

@@ -1,7 +1,7 @@
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.util.Locale" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html lang="eu">
 <head>
     <title>New Match</title>
@@ -24,7 +24,7 @@
     %>
     </h1></div>
 </header>
-<form method="POST" action="/createMatch">
+<form method="POST" action="/new-match">
     <div class="wrapper">
         <div>
             <label for="Player1"><b>Enter Player 1 name</b>

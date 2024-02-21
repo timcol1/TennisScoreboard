@@ -11,18 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Match {
 
-    private UUID matchId;
 
-    private int player1Id;
-
-    private int player2Id;
-
-    private int player1Score;
-
-    private int player2Score;
-
-    private int player1Set;
-
-    private int player2Set;
+    private Player playerOne;
 
 }
