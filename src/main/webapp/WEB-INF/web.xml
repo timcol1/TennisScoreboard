@@ -36,6 +36,6 @@
 
     <servlet-mapping>
         <servlet-name>Match</servlet-name>
-        <url-pattern>/match-score</url-pattern>
+        <url-pattern>/match.jsp</url-pattern>
     </servlet-mapping>
 </web-app>
