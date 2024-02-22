@@ -1,6 +1,9 @@
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.util.Locale" %>
+<%@ page import="java.util.UUID" %>
+<%@ page import="avlyakulov.timur.service.MatchInProgressService" %>
+<%@ page import="avlyakulov.timur.dto.MatchResponse" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,6 +14,11 @@
         <%@include file="/pages/css/match.css" %>
     </style>
 </head>
+<%
+    UUID matchId = UUID.fromString(request.getParameter("uuid"));
+    MatchInProgressService matchInProgressService = new MatchInProgressService();
+    MatchResponse match = matchInProgressService.getMatchById(matchId);
+%>
 <body>
 <header class="header">
     <div><h1 class="mint"><a href="http://localhost:8080/main-page"><img src="../img/tennis_racket.png"
@@ -24,20 +32,19 @@
     %>
     </h1></div>
 </header>
-
 <div class="wrapper">
     <div class="player player1">
         <div class="name">
             <h1>Player</h1>
-            <h1>${player1}</h1>
+            <h1><%= match.getPlayerOneName() %></h1>
         </div>
         <div class="sets">
             <h1>Sets</h1>
-            <h1>0</h1>
+            <h1><%= match.getSetPlayerOne() %></h1>
         </div>
         <div class="games">
             <h1>Games</h1>
-            <h1>0</h1>
+            <h1><%= match.getGamePlayerOne() %></h1>
         </div>
     </div>
     <div class="sign">
@@ -46,15 +53,15 @@
     <div class="player player2">
         <div class="games">
             <h1>Games</h1>
-            <h1>0</h1>
+            <h1><%= match.getGamePlayerTwo() %></h1>
         </div>
         <div class="sets">
             <h1>Sets</h1>
-            <h1>0</h1>
+            <h1><%= match.getSetPlayerTwo() %></h1>
         </div>
         <div class="name">
             <h1>Player</h1>
-            <h1>${player2}</h1>
+            <h1><%= match.getPlayerTwoName() %></h1>
         </div>
     </div>
 </div>
