@@ -12,6 +12,10 @@ public class MatchResponse {
 
     private String playerTwoName;
 
+    private Integer playerOneId;
+
+    private Integer playerTwoId;
+
     private int gamePlayerOne;
 
     private int gamePlayerTwo;
@@ -20,8 +24,10 @@ public class MatchResponse {
 
     private int setPlayerTwo;
 
-    public MatchResponse(String playerOneName, String playerTwoName) {
+    public MatchResponse(String playerOneName, String playerTwoName, Integer playerOneId, Integer playerTwoId) {
         this.playerOneName = playerOneName;
         this.playerTwoName = playerTwoName;
+        this.playerOneId = playerOneId;
+        this.playerTwoId = playerTwoId;
     }
 }
