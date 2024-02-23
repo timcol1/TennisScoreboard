@@ -68,15 +68,17 @@
     <div class="buttons">
         <div>
             <form method="POST" action="/match-score?uuid=<%= matchId %>">
-                <button type="submit" class="button1" name="winnerOne" value=${match.getPlayerOneId()}>Player 1 wins
-                    point!
+                <input type="hidden" name="playerOneId" value=${match.getPlayerOneId()}>
+                <button type="submit" class="button1">
+                    Player 1 wins point!
                 </button>
             </form>
         </div>
         <div>
             <form method="POST" action="/match-score?uuid=<%= matchId %>">
-                <button type="submit" class="button2" name="winnerTwo" value=${match.getPlayerTwoId()}>Player 2 wins
-                    point!
+                <input type="hidden" name="playerTwoId" value=${match.getPlayerTwoId()}>
+                <button type="submit" class="button2">
+                    Player 2 wins point!
                 </button>
             </form>
         </div>

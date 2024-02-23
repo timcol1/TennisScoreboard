@@ -32,6 +32,7 @@ public class MatchScoreController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
+        int winnerId = Integer.parseInt(req.getParameter("winner"));
         MatchResponse match = matchInProgressService.getMatchById(matchId);
         req.setAttribute("match", match);
         req.getRequestDispatcher("/match.jsp").forward(req, resp);
