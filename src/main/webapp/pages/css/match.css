@@ -11,7 +11,7 @@ html, body {
     min-height: 75px;
     background-color: darkblue;
     display: flex;
-
+    width: auto;
     color: white;
 }
 

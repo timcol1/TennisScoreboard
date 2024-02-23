@@ -14,4 +14,8 @@ public class MatchesInProgress {
     public static Match getMatchById(UUID matchId) {
         return matchesInProgress.get(matchId);
     }
+
+    public static void updateMatch(UUID matchId, Match match) {
+        matchesInProgress.put(matchId, match);
+    }
 }

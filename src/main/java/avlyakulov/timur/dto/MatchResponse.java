@@ -28,10 +28,16 @@ public class MatchResponse {
 
     private int setPlayerTwo;
 
-    public MatchResponse(String playerOneName, String playerTwoName, Integer playerOneId, Integer playerTwoId) {
+    public MatchResponse(String playerOneName, String playerTwoName, Integer playerOneId, Integer playerTwoId, int pointPlayerOne, int pointPlayerTwo, int gamePlayerOne, int gamePlayerTwo, int setPlayerOne, int setPlayerTwo) {
         this.playerOneName = playerOneName;
         this.playerTwoName = playerTwoName;
         this.playerOneId = playerOneId;
         this.playerTwoId = playerTwoId;
+        this.pointPlayerOne = pointPlayerOne;
+        this.pointPlayerTwo = pointPlayerTwo;
+        this.gamePlayerOne = gamePlayerOne;
+        this.gamePlayerTwo = gamePlayerTwo;
+        this.setPlayerOne = setPlayerOne;
+        this.setPlayerTwo = setPlayerTwo;
     }
 }
