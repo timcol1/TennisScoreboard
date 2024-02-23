@@ -1,7 +1,7 @@
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.util.Locale" %>
-<%@ page import="avlyakulov.timur.model.Match" %>
+<%@ page import="java.util.UUID" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,8 +12,8 @@
         <%@include file="/pages/css/match.css" %>
     </style>
 </head>
-<%--<% Match match = (Match) request.getAttribute("match"); %>--%>
 <body>
+<% UUID matchId = UUID.fromString(request.getParameter("uuid")); %>
 <header class="header">
     <div><h1 class="mint"><a href="http://localhost:8080/main-page"><img src="../img/tennis_racket.png"
                                                                          alt="tennis racket">Tennis Scoreboard</a></h1>
@@ -67,13 +67,17 @@
 <main>
     <div class="buttons">
         <div>
-            <form method="POST" action="/match-score">
-                <button type="submit" class="button1">Player 1 wins point!</button>
+            <form method="POST" action="/match-score?uuid=<%= matchId %>">
+                <button type="submit" class="button1" name="winnerOne" value=${match.getPlayerOneId()}>Player 1 wins
+                    point!
+                </button>
             </form>
         </div>
         <div>
-            <form method="POST" action="/match-score">
-                <button type="submit" class="button2">Player 2 wins point!</button>
+            <form method="POST" action="/match-score?uuid=<%= matchId %>">
+                <button type="submit" class="button2" name="winnerTwo" value=${match.getPlayerTwoId()}>Player 2 wins
+                    point!
+                </button>
             </form>
         </div>
     </div>

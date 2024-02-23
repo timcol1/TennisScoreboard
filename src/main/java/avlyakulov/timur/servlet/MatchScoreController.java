@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @WebServlet(urlPatterns = "/match-score")
-public class MatchScoreView extends HttpServlet {
+public class MatchScoreController extends HttpServlet {
     private MatchInProgressService matchInProgressService;
 
     @Override
@@ -31,6 +31,9 @@ public class MatchScoreView extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        UUID matchId = UUID.fromString(req.getParameter("uuid"));
+        MatchResponse match = matchInProgressService.getMatchById(matchId);
+        req.setAttribute("match", match);
+        req.getRequestDispatcher("/match.jsp").forward(req, resp);
     }
 }
