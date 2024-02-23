@@ -15,7 +15,7 @@ public class PlayerService {
         sessionFactory = HibernateUtilH2.getSessionFactory();
     }
 
-    public int getPlayerByNameIfExists(Player player) {
+    public int getPlayerByNameOrCreateHimIfNotExist(Player player) {
         int playerId;
         try {
             playerId = findPlayerByName(player.getName()).getId();

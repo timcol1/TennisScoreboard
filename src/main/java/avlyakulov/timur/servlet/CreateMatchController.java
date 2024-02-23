@@ -3,6 +3,7 @@ package avlyakulov.timur.servlet;
 import avlyakulov.timur.model.Match;
 import avlyakulov.timur.model.MatchesInProgress;
 import avlyakulov.timur.model.Player;
+import avlyakulov.timur.service.CreateMatchService;
 import avlyakulov.timur.service.PlayerService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -18,13 +19,15 @@ import java.util.UUID;
 
 @Slf4j
 @WebServlet(urlPatterns = "/new-match")
-public class CreateMatchView extends HttpServlet {
+public class CreateMatchController extends HttpServlet {
 
     private PlayerService playerService;
+    private CreateMatchService createMatchService;
 
     @Override
     public void init() throws ServletException {
         playerService = new PlayerService();
+        createMatchService = new CreateMatchService();
     }
 
     @Override
@@ -39,14 +42,9 @@ public class CreateMatchView extends HttpServlet {
         String playerOneName = req.getParameter("player1");
         String playerTwoName = req.getParameter("player2");
         log.info("We got a request to begin a match with the first player " + playerOneName + " and the second player " + playerTwoName);
-        Player playerOne = new Player(playerOneName);
-        Player playerTwo = new Player(playerTwoName);
-        int playerOneId = playerService.getPlayerByNameIfExists(playerOne);
-        int playerTwoId = playerService.getPlayerByNameIfExists(playerTwo);
 
-        Match match = new Match(playerOneId, playerTwoId);
-        UUID matchId = UUID.randomUUID();
-        MatchesInProgress.createMatch(matchId, match);
+
+        UUID matchId = createMatchService.createMatch(playerOneName, playerTwoName);
         log.info("We created match in progress with such id {}", matchId);
 
         resp.sendRedirect("/match-score?uuid=" + matchId);

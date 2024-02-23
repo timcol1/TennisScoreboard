@@ -26,7 +26,7 @@ public class MatchInProgressService {
             String playerTwoName = session.createNamedQuery("HQL_FindPlayerNameById", String.class)
                     .setParameter("id", match.getPlayerTwoId()).
                     getSingleResult();
-            return new MatchResponse(playerOneName, playerTwoName);
+            return new MatchResponse(playerOneName, playerTwoName, match.getPlayerOneId(), match.getPlayerTwoId());
         }
     }
 }
