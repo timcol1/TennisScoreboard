@@ -16,6 +16,10 @@ public class MatchResponse {
 
     private Integer playerTwoId;
 
+    private int pointPlayerOne;
+
+    private int pointPlayerTwo;
+
     private int gamePlayerOne;
 
     private int gamePlayerTwo;

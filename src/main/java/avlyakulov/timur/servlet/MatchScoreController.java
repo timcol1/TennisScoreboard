@@ -26,6 +26,7 @@ public class MatchScoreController extends HttpServlet {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
         MatchResponse match = matchInProgressService.getMatchById(matchId);
         req.setAttribute("match", match);
+        match.getPointPlayerTwo();
         req.getRequestDispatcher("/match.jsp").forward(req, resp);
     }
 

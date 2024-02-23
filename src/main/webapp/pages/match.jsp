@@ -41,11 +41,21 @@
             <h1>${match.getGamePlayerOne()}
             </h1>
         </div>
+        <div class="points">
+            <h1>Points</h1>
+            <h1>${match.getPointPlayerOne()}
+            </h1>
+        </div>
     </div>
     <div class="sign">
         <h1>Match score</h1>
     </div>
     <div class="player player2">
+        <div class="points">
+            <h1>Points</h1>
+            <h1>${match.getPointPlayerTwo()}
+            </h1>
+        </div>
         <div class="games">
             <h1>Games</h1>
             <h1>${match.getGamePlayerTwo()}
