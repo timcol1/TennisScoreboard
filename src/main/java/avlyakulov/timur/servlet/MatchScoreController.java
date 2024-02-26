@@ -4,7 +4,9 @@ package avlyakulov.timur.servlet;
 import avlyakulov.timur.dto.MatchResponse;
 import avlyakulov.timur.model.Match;
 import avlyakulov.timur.model.MatchesInProgress;
+import avlyakulov.timur.model.Player;
 import avlyakulov.timur.model.State;
+import avlyakulov.timur.service.FinishedMatchesPersistenceService;
 import avlyakulov.timur.service.MatchInProgressService;
 import avlyakulov.timur.service.MatchScoreCalculationService;
 import jakarta.servlet.ServletException;
@@ -22,10 +24,13 @@ public class MatchScoreController extends HttpServlet {
 
     private MatchScoreCalculationService matchScoreCalculationService;
 
+    private FinishedMatchesPersistenceService finishedMatchesPersistenceService;
+
     @Override
     public void init() throws ServletException {
         matchInProgressService = new MatchInProgressService();
         matchScoreCalculationService = new MatchScoreCalculationService();
+        finishedMatchesPersistenceService = new FinishedMatchesPersistenceService();
     }
 
     @Override
@@ -43,7 +48,9 @@ public class MatchScoreController extends HttpServlet {
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
         Match match = MatchesInProgress.getMatchById(matchId);
         if (match.getState().equals(State.FININSHED)) {
-            String winnerName = getNameOfWinner(match);
+            Player winner = getPlayerWinner(match);
+            finishedMatchesPersistenceService.saveMatch(match, winner);
+            String winnerName = winner.getName();
             req.setAttribute("winnerName", winnerName);
             MatchResponse matchResponse = matchInProgressService.getMatchById(matchId);
             req.setAttribute("match", matchResponse);
@@ -55,11 +62,11 @@ public class MatchScoreController extends HttpServlet {
         }
     }
 
-    private String getNameOfWinner(Match match) {
+    private Player getPlayerWinner(Match match) {
         if (match.getSetPlayerOne() == 2) {
-            return match.getPlayerOne().getName();
+            return match.getPlayerOne();
         } else {
-            return match.getPlayerTwo().getName();
+            return match.getPlayerTwo();
         }
     }
 }

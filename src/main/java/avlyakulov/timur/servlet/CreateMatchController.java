@@ -20,13 +20,10 @@ import java.util.UUID;
 @Slf4j
 @WebServlet(urlPatterns = "/new-match")
 public class CreateMatchController extends HttpServlet {
-
-    private PlayerService playerService;
     private CreateMatchService createMatchService;
 
     @Override
     public void init() throws ServletException {
-        playerService = new PlayerService();
         createMatchService = new CreateMatchService();
     }
 
@@ -42,7 +39,6 @@ public class CreateMatchController extends HttpServlet {
         String playerOneName = req.getParameter("player1");
         String playerTwoName = req.getParameter("player2");
         log.info("We got a request to begin a match with the first player " + playerOneName + " and the second player " + playerTwoName);
-
 
         UUID matchId = createMatchService.createMatch(playerOneName, playerTwoName);
         log.info("We created match in progress with such id {}", matchId);

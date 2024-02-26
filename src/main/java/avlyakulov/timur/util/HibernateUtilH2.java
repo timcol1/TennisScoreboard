@@ -1,6 +1,6 @@
 package avlyakulov.timur.util;
 
-import avlyakulov.timur.model.Match;
+import avlyakulov.timur.model.MatchScoreModel;
 import avlyakulov.timur.model.Player;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.SessionFactory;
@@ -29,7 +29,7 @@ public class HibernateUtilH2 {
             sessionFactory = new Configuration()
                     .addProperties(hibernateProperty)
                     .addAnnotatedClass(Player.class)
-                    .addAnnotatedClass(Match.class)
+                    .addAnnotatedClass(MatchScoreModel.class)
                     .buildSessionFactory();
         }
         return sessionFactory;
