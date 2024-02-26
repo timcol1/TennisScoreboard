@@ -12,7 +12,6 @@ public class MatchScoreCalculationService {
 
     public void addPointToWinnerOfGame(int winnerId, UUID matchId) {
         Match match = MatchesInProgress.getMatchById(matchId);
-        setGameStatus(match);
         switch (match.getState()) {
             case GAME -> {
                 if (match.getPlayerOne().getId() == winnerId) {
@@ -22,17 +21,23 @@ public class MatchScoreCalculationService {
                 }
             }
             case ADVANTAGE -> {
-
+                if (match.getPlayerOne().getId() == winnerId) {
+                    match.setPointPlayerOne(increasePointPlayerInAdvantage(match.getPointPlayerOne()));
+                } else {
+                    match.setPointPlayerTwo(increasePointPlayerInAdvantage(match.getPointPlayerTwo()));
+                }
             }
             case TIE -> {
-
-            }
-            case FININSHED -> {
-
+                if (match.getPlayerOne().getId() == winnerId) {
+                    match.setPointPlayerOne(increasePointPlayerInTie(match.getPointPlayerOne()));
+                } else {
+                    match.setPointPlayerTwo(increasePointPlayerInTie(match.getPointPlayerTwo()));
+                }
             }
             default -> throw new RuntimeException("Something went wrong in addPointToWinnerOfGame()");
         }
-        updateGameAndSet(match);
+        updateGameScore(match);
+        setOrUpdateGameStatus(match);
         MatchesInProgress.updateMatch(matchId, match);
     }
 
@@ -44,17 +49,26 @@ public class MatchScoreCalculationService {
         }
     }
 
-    private void setGameStatus(Match match) {
+    private int increasePointPlayerInAdvantage(int playerPoint) {
+        return playerPoint + 5;
+    }
+
+    private int increasePointPlayerInTie(int playerPoint) {
+        return ++playerPoint;
+    }
+
+    private void setOrUpdateGameStatus(Match match) {
         if (match.getPointPlayerOne() == 40 && match.getPointPlayerTwo() == 40) {
             match.setState(State.ADVANTAGE);
         } else if (match.getGamePlayerOne() == 6 && match.getGamePlayerTwo() == 6) {
             match.setState(State.TIE);
         } else if (match.getSetPlayerOne() == 2 || match.getSetPlayerTwo() == 2) {
             match.setState(State.FININSHED);
+            resetPlayersPointsAndGames(match);
         }
     }
 
-    private void updateGameAndSet(Match match) {
+    private void updateGameScore(Match match) {
         switch (match.getState()) {
             case GAME -> {
                 if (match.getPointPlayerOne() == 50) {
@@ -62,6 +76,7 @@ public class MatchScoreCalculationService {
                     match.setGamePlayerOne(match.getGamePlayerOne() + 1);
                 } else if (match.getPointPlayerTwo() == 50) {
                     resetPlayersPoints(match);
+                    //todo write a function to increase a game player one or two
                     match.setGamePlayerTwo(match.getGamePlayerTwo() + 1);
                 }
                 if (match.getGamePlayerOne() == 6 && match.getGamePlayerTwo() < 5) {
@@ -78,6 +93,31 @@ public class MatchScoreCalculationService {
                     match.setSetPlayerTwo(match.getSetPlayerTwo() + 1);
                 }
             }
+            case ADVANTAGE -> {
+                if (match.getPointPlayerOne() == 45 && match.getPointPlayerTwo() == 45) {
+                    match.setPointPlayerOne(40);
+                    match.setPointPlayerTwo(40);
+                } else if (match.getPointPlayerOne() == 50) {
+                    resetPlayersPoints(match);
+                    match.setGamePlayerOne(match.getGamePlayerOne() + 1);
+                    match.setState(State.GAME);
+                } else if (match.getPointPlayerTwo() == 50) {
+                    resetPlayersPoints(match);
+                    match.setGamePlayerOne(match.getGamePlayerTwo() + 1);
+                    match.setState(State.GAME);
+                }
+            }
+            case TIE -> {
+                if (match.getPointPlayerOne() == 7) {
+                    resetPlayersPointsAndGames(match);
+                    match.setSetPlayerOne(match.getSetPlayerOne() + 1);
+                    match.setState(State.GAME);
+                } else if (match.getPointPlayerTwo() == 7) {
+                    resetPlayersPointsAndGames(match);
+                    match.setSetPlayerTwo(match.getSetPlayerTwo() + 1);
+                    match.setState(State.GAME);
+                }
+            }
         }
     }
 
@@ -87,6 +127,13 @@ public class MatchScoreCalculationService {
     }
 
     private void resetPlayersGames(Match match) {
+        match.setGamePlayerOne(0);
+        match.setGamePlayerTwo(0);
+    }
+
+    private void resetPlayersPointsAndGames(Match match) {
+        match.setPointPlayerOne(0);
+        match.setPointPlayerTwo(0);
         match.setGamePlayerOne(0);
         match.setGamePlayerTwo(0);
     }

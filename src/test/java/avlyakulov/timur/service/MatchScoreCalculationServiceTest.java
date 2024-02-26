@@ -71,10 +71,11 @@ class MatchScoreCalculationServiceTest {
 
 
     @Test
-    void addPointToWinnerOfGame_add5PointPlayerOne_advantagePlayersScoreFirstPlayer() {
+    void addPointToWinnerOfGame_add5PointPlayerOne_advantageFirstPlayerScores() {
         int winnerId = 1;
         match.setPointPlayerOne(40);
         match.setPointPlayerTwo(40);
+        match.setState(State.ADVANTAGE);
 
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
 
@@ -88,6 +89,7 @@ class MatchScoreCalculationServiceTest {
         int winnerId = 2;
         match.setPointPlayerOne(45);
         match.setPointPlayerTwo(40);
+        match.setState(State.ADVANTAGE);
 
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
 
@@ -101,6 +103,7 @@ class MatchScoreCalculationServiceTest {
         int winnerId = 1;
         match.setPointPlayerOne(45);
         match.setPointPlayerTwo(40);
+        match.setState(State.ADVANTAGE);
 
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
 
@@ -108,7 +111,7 @@ class MatchScoreCalculationServiceTest {
         assertEquals(0, match.getPointPlayerTwo());
         assertEquals(1, match.getGamePlayerOne());
         assertEquals(0, match.getGamePlayerTwo());
-        assertEquals(State.ADVANTAGE, match.getState());
+        assertEquals(State.GAME, match.getState());
     }
 
     @Test
@@ -129,7 +132,8 @@ class MatchScoreCalculationServiceTest {
         int winnerId = 1;
         match.setPointPlayerOne(40);
         match.setGamePlayerOne(5);
-        match.setGamePlayerOne(6);
+        match.setGamePlayerTwo(6);
+        match.setState(State.GAME);
 
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
 
@@ -146,7 +150,8 @@ class MatchScoreCalculationServiceTest {
     void addPointToWinnerOfGame_tieBreakPlayerOneScore1Point_playerOne6GamePlayerTwo6Game() {
         int winnerId = 1;
         match.setGamePlayerOne(6);
-        match.setGamePlayerOne(6);
+        match.setGamePlayerTwo(6);
+        match.setState(State.TIE);
 
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
 
@@ -166,6 +171,7 @@ class MatchScoreCalculationServiceTest {
         match.setPointPlayerTwo(6);
         match.setGamePlayerOne(6);
         match.setGamePlayerOne(6);
+        match.setState(State.TIE);
 
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
 
