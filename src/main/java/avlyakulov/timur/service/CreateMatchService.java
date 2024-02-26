@@ -26,6 +26,6 @@ public class CreateMatchService {
         int playerOneId = playerService.getPlayerByNameOrCreateHimIfNotExist(playerOne);
         int playerTwoId = playerService.getPlayerByNameOrCreateHimIfNotExist(playerTwo);
 
-        return new Match(playerOneId, playerTwoId);
+        return new Match(playerOneId, playerTwoId, playerOne.getName(), playerTwo.getName());
     }
 }

@@ -11,6 +11,10 @@ public class Match {
 
     private Integer playerTwoId;
 
+    private String playerOneName;
+
+    private String playerTwoName;
+
     private int pointPlayerOne;
 
     private int pointPlayerTwo;
@@ -25,9 +29,11 @@ public class Match {
 
     private State state;
 
-    public Match(int playerOneId, int playerTwoId) {
+    public Match(int playerOneId, int playerTwoId, String playerOneName, String playerTwoName) {
         this.playerOneId = playerOneId;
         this.playerTwoId = playerTwoId;
-        state = State.GAME;
+        this.playerOneName = playerOneName;
+        this.playerTwoName = playerTwoName;
+        this.state = State.GAME;
     }
 }
