@@ -19,16 +19,9 @@ public class MatchInProgressService {
 
     public MatchResponse getMatchById(UUID uuid) {
         Match match = MatchesInProgress.getMatchById(uuid);
-        try (Session session = sessionFactory.openSession()) {
-            String playerOneName = session.createNamedQuery("HQL_FindPlayerNameById", String.class)
-                    .setParameter("id", match.getPlayerOneId()).
-                    getSingleResult();
-            String playerTwoName = session.createNamedQuery("HQL_FindPlayerNameById", String.class)
-                    .setParameter("id", match.getPlayerTwoId()).
-                    getSingleResult();
             return new MatchResponse(
-                    playerOneName,
-                    playerTwoName,
+                    match.getPlayerOneName(),
+                    match.getPlayerTwoName(),
                     match.getPlayerOneId(),
                     match.getPlayerTwoId(),
                     match.getPointPlayerOne(),
@@ -38,6 +31,5 @@ public class MatchInProgressService {
                     match.getSetPlayerOne(),
                     match.getSetPlayerTwo()
                     );
-        }
     }
 }

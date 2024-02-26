@@ -12,12 +12,24 @@ public class MatchScoreCalculationService {
 
     public void addPointToWinnerOfGame(int winnerId, UUID matchId) {
         Match match = MatchesInProgress.getMatchById(matchId);
-        if (match.getState().equals(State.GAME)) {
-            if (match.getPlayerOneId() == winnerId) {
-                match.setPointPlayerOne(increasePointPlayerInGame(match.getPointPlayerOne()));
-            } else {
-                match.setPointPlayerTwo(increasePointPlayerInGame(match.getPointPlayerTwo()));
+        switch (match.getState()) {
+            case GAME -> {
+                if (match.getPlayerOneId() == winnerId) {
+                    match.setPointPlayerOne(increasePointPlayerInGame(match.getPointPlayerOne()));
+                } else {
+                    match.setPointPlayerTwo(increasePointPlayerInGame(match.getPointPlayerTwo()));
+                }
             }
+            case ADVANTAGE -> {
+
+            }
+            case TIE -> {
+
+            }
+            case FININSHED -> {
+
+            }
+            default -> throw new RuntimeException("Something went wrong in addPointToWinnerOfGame()");
         }
         MatchesInProgress.updateMatch(matchId, match);
     }
