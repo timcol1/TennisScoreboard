@@ -46,4 +46,14 @@
         <servlet-name>MatchFinished</servlet-name>
         <url-pattern>/match-finished.jsp</url-pattern>
     </servlet-mapping>
+
+    <!--Matches-->
+    <servlet>
+        <servlet-name>Matches</servlet-name>
+        <jsp-file>/pages/matches.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Matches</servlet-name>
+        <url-pattern>/matches</url-pattern>
+    </servlet-mapping>
 </web-app>

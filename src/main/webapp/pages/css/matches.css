@@ -1,0 +1,50 @@
+main {
+    flex-grow: 1;
+    background-image: url('/img/court.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: -1px;
+    min-height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table {
+    min-width: 65%;
+    min-height: 75%;
+    background-color: #3b3b3b;
+    border-radius: 25px;
+}
+
+.sign {
+    text-align: center;
+    color: lightblue;
+    font-size: 50px;
+}
+
+.head {
+    width: 100%;
+    margin-left: 10px;
+}
+
+.head label {
+    font-size: 30px;
+    color: white;
+}
+.head input {
+    font-size: 20px;
+
+    background-color: #646464;
+    color: white;
+}
+
+.head form .button {
+    font-size: 25px;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    min-height: 30px;
+    width: 140px;
+    padding: 2px 10px;
+}

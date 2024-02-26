@@ -1,6 +1,5 @@
 package avlyakulov.timur.servlet;
 
-
 import avlyakulov.timur.dto.MatchResponse;
 import avlyakulov.timur.model.Match;
 import avlyakulov.timur.model.MatchesInProgress;
