@@ -2,7 +2,6 @@ package avlyakulov.timur.service;
 
 import avlyakulov.timur.model.Match;
 import avlyakulov.timur.model.MatchesInProgress;
-import avlyakulov.timur.model.State;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.UUID;
@@ -14,7 +13,7 @@ public class MatchScoreCalculationService {
         Match match = MatchesInProgress.getMatchById(matchId);
         switch (match.getState()) {
             case GAME -> {
-                if (match.getPlayerOneId() == winnerId) {
+                if (match.getPlayerOne().getId() == winnerId) {
                     match.setPointPlayerOne(increasePointPlayerInGame(match.getPointPlayerOne()));
                 } else {
                     match.setPointPlayerTwo(increasePointPlayerInGame(match.getPointPlayerTwo()));
@@ -41,4 +40,6 @@ public class MatchScoreCalculationService {
             return playerPoint + 10;
         }
     }
+
+//    private void
 }

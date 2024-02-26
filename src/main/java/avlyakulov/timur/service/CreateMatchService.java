@@ -23,9 +23,9 @@ public class CreateMatchService {
     private Match addPlayersToMatch(String playerOneName, String playerTwoName) {
         Player playerOne = new Player(playerOneName);
         Player playerTwo = new Player(playerTwoName);
-        int playerOneId = playerService.getPlayerByNameOrCreateHimIfNotExist(playerOne);
-        int playerTwoId = playerService.getPlayerByNameOrCreateHimIfNotExist(playerTwo);
+        playerOne.setId(playerService.getPlayerByNameOrCreateHimIfNotExist(playerOne));
+        playerTwo.setId(playerService.getPlayerByNameOrCreateHimIfNotExist(playerTwo));
 
-        return new Match(playerOneId, playerTwoId, playerOne.getName(), playerTwo.getName());
+        return new Match(playerOne, playerTwo);
     }
 }

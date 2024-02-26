@@ -7,13 +7,9 @@ import lombok.Setter;
 @Setter
 public class Match {
 
-    private Integer playerOneId;
+    private Player playerOne;
 
-    private Integer playerTwoId;
-
-    private String playerOneName;
-
-    private String playerTwoName;
+    private Player playerTwo;
 
     private int pointPlayerOne;
 
@@ -29,11 +25,9 @@ public class Match {
 
     private State state;
 
-    public Match(int playerOneId, int playerTwoId, String playerOneName, String playerTwoName) {
-        this.playerOneId = playerOneId;
-        this.playerTwoId = playerTwoId;
-        this.playerOneName = playerOneName;
-        this.playerTwoName = playerTwoName;
+    public Match(Player playerOne, Player playerTwo) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
         this.state = State.GAME;
     }
 }
