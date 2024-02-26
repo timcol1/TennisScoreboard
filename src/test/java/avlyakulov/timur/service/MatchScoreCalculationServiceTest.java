@@ -253,8 +253,10 @@ class MatchScoreCalculationServiceTest {
     @Test
     void addPointToWinnerOfGame_firstPlayerWinGame_score40Point1GameFirstPlayer() {
         int winnerId = 1;
-        match.setGamePlayerOne(6);
+        match.setPointPlayerOne(40);
+        match.setGamePlayerOne(5);
         match.setSetPlayerOne(1);
+        match.setState(State.GAME);
 
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
 

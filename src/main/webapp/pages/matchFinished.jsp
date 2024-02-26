@@ -3,10 +3,9 @@
 <%@ page import="java.util.Locale" %>
 <%@ page import="java.util.UUID" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    <title>Match</title>
+    <title>Match Finished</title>
     <link rel="shortcut icon" href="../img/tennis_ball.png"/>
     <style>
         <%@include file="/pages/css/mainPage.css" %>
@@ -37,31 +36,11 @@
             <h1>Sets</h1>
             <h1>${match.getSetPlayerOne()}</h1>
         </div>
-        <div class="games">
-            <h1>Games</h1>
-            <h1>${match.getGamePlayerOne()}
-            </h1>
-        </div>
-        <div class="points">
-            <h1>Points</h1>
-            <h1>${match.getPointPlayerOne() == 45 ? 'AD' : match.getPointPlayerOne()}
-            </h1>
-        </div>
     </div>
     <div class="sign">
-        <h1>Match score</h1>
+        <h1>Match finished! ${winnerName} wins</h1>
     </div>
     <div class="player player2">
-        <div class="points">
-            <h1>Points</h1>
-            <h1>${match.getPointPlayerTwo() == 45 ? 'AD' : match.getPointPlayerTwo()}
-            </h1>
-        </div>
-        <div class="games">
-            <h1>Games</h1>
-            <h1>${match.getGamePlayerTwo()}
-            </h1>
-        </div>
         <div class="sets">
             <h1>Sets</h1>
             <h1>${match.getSetPlayerTwo()}
@@ -76,24 +55,7 @@
 </div>
 
 <main>
-    <div class="buttons">
-        <div>
-            <form method="POST" action="/match-score?uuid=<%= matchId %>">
-                <input type="hidden" name="winnerId" value=${match.getPlayerOne().getId()}>
-                <button type="submit" class="button1">
-                    Player 1 wins point!
-                </button>
-            </form>
-        </div>
-        <div>
-            <form method="POST" action="/match-score?uuid=<%= matchId %>">
-                <input type="hidden" name="winnerId" value=${match.getPlayerTwo().getId()}>
-                <button type="submit" class="button2">
-                    Player 2 wins point!
-                </button>
-            </form>
-        </div>
-    </div>
+
 </main>
 
 <footer>

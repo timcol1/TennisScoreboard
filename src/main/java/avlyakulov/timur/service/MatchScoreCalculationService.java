@@ -34,7 +34,10 @@ public class MatchScoreCalculationService {
                     match.setPointPlayerTwo(increasePointPlayerInTie(match.getPointPlayerTwo()));
                 }
             }
-            default -> throw new RuntimeException("Something went wrong in addPointToWinnerOfGame()");
+            case FININSHED -> {
+                return;
+            }
+            default -> throw new RuntimeException("Something went wrong in addPointToWinnerOfGame() or you in finished state try to add point");
         }
         updateGameScore(match);
         setOrUpdateGameStatus(match);

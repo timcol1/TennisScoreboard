@@ -22,7 +22,6 @@
         <servlet-name>NewMatch</servlet-name>
         <jsp-file>/pages/newMatch.jsp</jsp-file>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>NewMatch</servlet-name>
         <url-pattern>/new-match.jsp</url-pattern>
@@ -33,9 +32,18 @@
         <servlet-name>Match</servlet-name>
         <jsp-file>/pages/match.jsp</jsp-file>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>Match</servlet-name>
         <url-pattern>/match.jsp</url-pattern>
+    </servlet-mapping>
+
+    <!--Match Finished-->
+    <servlet>
+        <servlet-name>MatchFinished</servlet-name>
+        <jsp-file>/pages/matchFinished.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MatchFinished</servlet-name>
+        <url-pattern>/match-finished.jsp</url-pattern>
     </servlet-mapping>
 </web-app>
