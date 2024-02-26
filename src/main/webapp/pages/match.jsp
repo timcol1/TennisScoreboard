@@ -30,7 +30,7 @@
     <div class="player player1">
         <div class="name">
             <h1>Player</h1>
-            <h1>${match.getPlayerOneName()}</h1>
+            <h1>${match.getPlayerOne().getName()}</h1>
         </div>
         <div class="sets">
             <h1>Sets</h1>
@@ -68,7 +68,7 @@
         </div>
         <div class="name">
             <h1>Player</h1>
-            <h1>${match.getPlayerTwoName()}
+            <h1>${match.getPlayerTwo().getName()}
             </h1>
         </div>
     </div>
@@ -78,7 +78,7 @@
     <div class="buttons">
         <div>
             <form method="POST" action="/match-score?uuid=<%= matchId %>">
-                <input type="hidden" name="winnerId" value=${match.getPlayerOneId()}>
+                <input type="hidden" name="winnerId" value=${match.getPlayerOne().getId()}>
                 <button type="submit" class="button1">
                     Player 1 wins point!
                 </button>
@@ -86,7 +86,7 @@
         </div>
         <div>
             <form method="POST" action="/match-score?uuid=<%= matchId %>">
-                <input type="hidden" name="winnerId" value=${match.getPlayerTwoId()}>
+                <input type="hidden" name="winnerId" value=${match.getPlayerTwo().getId()}>
                 <button type="submit" class="button2">
                     Player 2 wins point!
                 </button>

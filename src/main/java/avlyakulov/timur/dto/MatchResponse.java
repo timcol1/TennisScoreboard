@@ -1,5 +1,6 @@
 package avlyakulov.timur.dto;
 
+import avlyakulov.timur.model.Player;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,13 +9,9 @@ import lombok.Setter;
 @Setter
 public class MatchResponse {
 
-    private String playerOneName;
+    private Player playerOne;
 
-    private String playerTwoName;
-
-    private Integer playerOneId;
-
-    private Integer playerTwoId;
+    private Player playerTwo;
 
     private int pointPlayerOne;
 
@@ -28,11 +25,9 @@ public class MatchResponse {
 
     private int setPlayerTwo;
 
-    public MatchResponse(String playerOneName, String playerTwoName, Integer playerOneId, Integer playerTwoId, int pointPlayerOne, int pointPlayerTwo, int gamePlayerOne, int gamePlayerTwo, int setPlayerOne, int setPlayerTwo) {
-        this.playerOneName = playerOneName;
-        this.playerTwoName = playerTwoName;
-        this.playerOneId = playerOneId;
-        this.playerTwoId = playerTwoId;
+    public MatchResponse(Player playerOne, Player playerTwo, int pointPlayerOne, int pointPlayerTwo, int gamePlayerOne, int gamePlayerTwo, int setPlayerOne, int setPlayerTwo) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
         this.pointPlayerOne = pointPlayerOne;
         this.pointPlayerTwo = pointPlayerTwo;
         this.gamePlayerOne = gamePlayerOne;

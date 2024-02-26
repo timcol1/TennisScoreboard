@@ -19,17 +19,16 @@ public class MatchInProgressService {
 
     public MatchResponse getMatchById(UUID uuid) {
         Match match = MatchesInProgress.getMatchById(uuid);
-            return new MatchResponse(
-                    match.getPlayerOneName(),
-                    match.getPlayerTwoName(),
-                    match.getPlayerOneId(),
-                    match.getPlayerTwoId(),
-                    match.getPointPlayerOne(),
-                    match.getPointPlayerTwo(),
-                    match.getGamePlayerOne(),
-                    match.getGamePlayerTwo(),
-                    match.getSetPlayerOne(),
-                    match.getSetPlayerTwo()
-                    );
+        match.getPlayerTwo().getId();
+        return new MatchResponse(
+                match.getPlayerOne(),
+                match.getPlayerTwo(),
+                match.getPointPlayerOne(),
+                match.getPointPlayerTwo(),
+                match.getGamePlayerOne(),
+                match.getGamePlayerTwo(),
+                match.getSetPlayerOne(),
+                match.getSetPlayerTwo()
+        );
     }
 }

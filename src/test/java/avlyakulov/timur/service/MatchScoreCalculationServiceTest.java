@@ -22,7 +22,7 @@ class MatchScoreCalculationServiceTest {
 
     @BeforeEach
     void setUp() {
-        match = new Match(playerOne.getId(), playerTwo.getId(), playerOne.getName(), playerTwo.getName());
+        match = new Match(playerOne, playerTwo);
         matchId = UUID.randomUUID();
         MatchesInProgress.createMatch(matchId, match);
     }
