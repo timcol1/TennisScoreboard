@@ -1,6 +1,7 @@
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.util.Locale" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -26,7 +27,7 @@
 </header>
 
 <main>
-    <div class="table">
+    <div class="wrapper">
         <h1 class="sign">Finished Matches</h1>
         <div class="head">
             <form method="POST" action="/matches">
@@ -35,6 +36,31 @@
                 <button class="button button-search" type="submit">Search</button>
                 <button class="button button-clear" type="submit">Clear</button>
             </form>
+        </div>
+        <div class="table">
+            <div class="table head-main">
+                <div class="table head">
+                    <div class="id">ID</div>
+                    <div class="player1">Player 1</div>
+                    <div class="player2">Player 2</div>
+                    <div class="winner">Winner</div>
+                </div>
+                <div class="table main">
+                    <c:forEach var="match" items="${matches}">
+                        <div class="id">${match.getId()}</div>
+                        <div class="player1">${match.getPlayerOne().getName()}</div>
+                        <div class="player2">${match.getPlayerTwo().getName()}</div>
+                        <div class="winner">${match.getWinner().getName()}</div>
+                    </c:forEach>
+                </div>
+            </div>
+            <div class="table footer">
+                <form method="GET" action="/matches">
+                    <button class="button button-previous" name="page" value="${page - 1}" >Previous </button>
+                    <button class="button button-page" disabled>${page}</button>
+                    <button class="button button-next" name="page" value="${page + 1}">Next</button>
+                </form>
+            </div>
         </div>
     </div>
 </main>

@@ -54,6 +54,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Matches</servlet-name>
-        <url-pattern>/matches</url-pattern>
+        <url-pattern>/matches.jsp</url-pattern>
     </servlet-mapping>
 </web-app>
