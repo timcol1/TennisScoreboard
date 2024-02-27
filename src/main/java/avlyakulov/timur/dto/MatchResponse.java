@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MatchResponse {
-
+    //todo create mapstruct mapper
     private Player playerOne;
 
     private Player playerTwo;
