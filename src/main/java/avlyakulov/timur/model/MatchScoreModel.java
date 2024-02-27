@@ -11,9 +11,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @NamedQueries({
-        //todo fix N + 1 problem here
         @NamedQuery(name = "HQL_FindAllMatches",
-                query = "from MatchScoreModel order by id ")
+                query = "from MatchScoreModel m left join fetch m.playerOne left join fetch m.playerTwo left join fetch m.winner order by m.id")
 })
 public class MatchScoreModel {
     @Id
