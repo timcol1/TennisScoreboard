@@ -1,6 +1,5 @@
 package avlyakulov.timur.util;
 
-import avlyakulov.timur.other.test.Human;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,8 +19,7 @@ public class HibernateUtilPostgres {
         }
         return new Configuration()
                 .addProperties(hibernateProperty)
-
-                .addAnnotatedClass(Human.class)
+                //.addAnnotatedClass(Human.class)
                 .buildSessionFactory();
     }
 }
