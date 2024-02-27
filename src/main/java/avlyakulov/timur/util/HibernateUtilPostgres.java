@@ -9,17 +9,23 @@ import java.util.Properties;
 
 @Slf4j
 public class HibernateUtilPostgres {
+
+    private static SessionFactory sessionFactory;
+
     public static SessionFactory getSessionFactory() {
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        Properties hibernateProperty = new Properties();
-        try {
-            hibernateProperty.load(classLoader.getResourceAsStream("postgres.properties"));
-        } catch (IOException e) {
-            log.error("Error with configure file for hibernate");
+        if (sessionFactory == null) {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            Properties hibernateProperty = new Properties();
+            try {
+                hibernateProperty.load(classLoader.getResourceAsStream("postgres.properties"));
+            } catch (IOException e) {
+                log.error("Error with configure file for hibernate");
+            }
+            sessionFactory = new Configuration()
+                    .addProperties(hibernateProperty)
+                    //.addAnnotatedClass(Human.class)
+                    .buildSessionFactory();
         }
-        return new Configuration()
-                .addProperties(hibernateProperty)
-                //.addAnnotatedClass(Human.class)
-                .buildSessionFactory();
+        return sessionFactory;
     }
 }
