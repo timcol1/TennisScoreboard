@@ -17,4 +17,4 @@ create table if not exists Matches
 
 INSERT INTO Players(Name) VALUES ('Timur'), ('Dima'), ('Denis'), ('Katya'), ('Anna');
 
-INSERT INTO Matches(Player1, Player2, Winner) VALUES (1, 2, 1), (1, 3, 3), ( 2, 3, 3), (4, 5, 5), (1, 5, 1);
+INSERT INTO Matches(Player1, Player2, Winner) VALUES (1, 2, 1), (1, 3, 3), ( 2, 3, 3), (4, 5, 5), (1, 5, 1), (1, 5, 5);
