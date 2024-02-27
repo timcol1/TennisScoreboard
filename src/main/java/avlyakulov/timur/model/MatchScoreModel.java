@@ -1,7 +1,6 @@
 package avlyakulov.timur.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +10,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@NamedQueries({
+        @NamedQuery(name = "HQL_FindAllMatches",
+                query = "from MatchScoreModel order by id ")
+})
 public class MatchScoreModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

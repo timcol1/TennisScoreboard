@@ -1,7 +1,7 @@
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.util.Locale" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="eu">
 <head>
     <title>New Match</title>
@@ -28,7 +28,7 @@
 <main>
     <form method="POST" action="/new-match">
         <div class="wrapper">
-            <div>
+            <div class="player">
                 <label for="Player1"><b>Enter Player 1 name</b>
                     <input id="Player1" name="player1" type="text" required>
                 </label>
@@ -39,7 +39,7 @@
                 </div>
                 <button type="submit"><b>START</b></button>
             </div>
-            <div>
+            <div class="player">
                 <label for="Player2"><b>Enter Player 2 name</b>
                     <input id="Player2" name="player2" type="text" required>
                 </label>

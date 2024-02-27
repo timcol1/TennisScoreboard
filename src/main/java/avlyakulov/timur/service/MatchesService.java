@@ -8,13 +8,13 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class MatchService {
+public class MatchesService {
 
     private SessionFactory sessionFactory;
 
     private final int matchesPerPage = 5;
 
-    public MatchService() {
+    public MatchesService() {
         this.sessionFactory = HibernateUtilH2.getSessionFactory();
     }
 
@@ -30,7 +30,7 @@ public class MatchService {
     public List<MatchScoreModel> getMatchesByOffsetAndLimit(int offset) {
         try (Session session = sessionFactory.openSession()) {
             Query<MatchScoreModel> hqlFindAllMatches = session.createNamedQuery("HQL_FindAllMatches", MatchScoreModel.class);
-            hqlFindAllMatches.setFirstResult(offset);
+            hqlFindAllMatches.setFirstResult((offset - 1) * 5);
             hqlFindAllMatches.setMaxResults(matchesPerPage);
             return hqlFindAllMatches.list();
         }

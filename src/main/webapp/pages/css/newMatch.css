@@ -21,7 +21,9 @@ form {
     grid-template-columns: 33% 33% 33%;
     margin-top: 0;
 }
-
+.player {
+    margin: 5px auto auto auto;
+}
 .wrapper div {
     line-height: 40px;
 }
