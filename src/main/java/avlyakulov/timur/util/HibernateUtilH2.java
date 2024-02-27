@@ -14,9 +14,6 @@ public class HibernateUtilH2 {
 
     private static SessionFactory sessionFactory;
 
-    private HibernateUtilH2() {
-    }
-
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
