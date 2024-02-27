@@ -10,6 +10,7 @@ html, body {
 form {
     margin: 0;
     width: auto;
+
 }
 
 .wrapper {
@@ -22,12 +23,7 @@ form {
 }
 
 .wrapper div {
-    line-height: 35px;
-}
-
-
-div {
-    margin: 5px auto auto auto;
+    line-height: 40px;
 }
 
 label {
