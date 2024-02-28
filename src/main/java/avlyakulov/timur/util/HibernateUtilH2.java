@@ -14,6 +14,8 @@ public class HibernateUtilH2 {
 
     private static SessionFactory sessionFactory;
 
+
+    //todo when the program finished close session factory
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();

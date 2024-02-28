@@ -36,8 +36,12 @@ public class MatchScoreController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
         MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
-        req.setAttribute("match", matchInProgressResponse);
-        req.getRequestDispatcher("/match.jsp").forward(req, resp);
+        if (finishedMatchesPersistenceService.checkMatchFinished(matchId)) {
+            req.getRequestDispatcher("/match-finished-memory.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("match", matchInProgressResponse);
+            req.getRequestDispatcher("/match.jsp").forward(req, resp);
+        }
     }
 
     @Override
@@ -48,9 +52,10 @@ public class MatchScoreController extends HttpServlet {
         Match match = MatchesInProgress.getMatchById(matchId);
         if (finishedMatchesPersistenceService.checkMatchFinished(match)) {
             Player winner = getPlayerWinner(match);
-            finishedMatchesPersistenceService.saveMatch(match, winner);
+            finishedMatchesPersistenceService.saveMatch(matchId, winner);
             String winnerName = winner.getName();
             req.setAttribute("winnerName", winnerName);
+            //todo make model for response finished match
             MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
             req.setAttribute("match", matchInProgressResponse);
             req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);

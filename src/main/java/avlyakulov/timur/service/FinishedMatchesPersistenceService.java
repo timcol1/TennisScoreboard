@@ -17,17 +17,32 @@ public class FinishedMatchesPersistenceService {
     }
 
     //todo delete match from in memory collection Map
-    public void saveMatch(Match match, Player winner) {
+    public void saveMatch(UUID matchId, Player winner) {
+        Match match = MatchesInProgress.getMatchById(matchId);
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();//открываем транзакцию
             MatchScoreModel matchFinished = new MatchScoreModel(match.getPlayerOne(), match.getPlayerTwo(), winner);
             session.persist(matchFinished);
             session.getTransaction().commit();//закрываем транзакцию
         }
+        deleteMatchFromMemory(matchId);
     }
 
     public boolean checkMatchFinished(Match match) {
-        return match.getState().equals(State.FININSHED);
+        if (match == null || match.getState().equals(State.FININSHED)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkMatchFinished(UUID matchId) {
+        Match match = MatchesInProgress.getMatchById(matchId);
+        if (match == null || match.getState().equals(State.FININSHED)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void deleteMatchFromMemory(UUID matchId) {

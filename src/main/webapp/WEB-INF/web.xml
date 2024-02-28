@@ -56,4 +56,14 @@
         <servlet-name>Matches</servlet-name>
         <url-pattern>/matches.jsp</url-pattern>
     </servlet-mapping>
+
+    <!--Match Finished in memory-->
+    <servlet>
+        <servlet-name>MatchFinishedInMemory</servlet-name>
+        <jsp-file>/pages/matchFinishedInMemory.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MatchFinishedInMemory</servlet-name>
+        <url-pattern>/match-finished-memory.jsp</url-pattern>
+    </servlet-mapping>
 </web-app>
