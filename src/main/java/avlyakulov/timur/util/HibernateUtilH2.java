@@ -25,19 +25,23 @@ public class HibernateUtilH2 {
 
     private static void isSessionFactoryCreatedAndCreateItIfNot() {
         if (sessionFactory == null) {
-            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-            Properties hibernateProperty = new Properties();
-            try {
-                hibernateProperty.load(classLoader.getResourceAsStream("h2.properties"));
-            } catch (IOException e) {
-                log.error("Error with configure file for hibernate");
-            }
-            sessionFactory = new Configuration()
-                    .addProperties(hibernateProperty)
-                    .addAnnotatedClass(Player.class)
-                    .addAnnotatedClass(MatchScoreModel.class)
-                    .buildSessionFactory();
+            createSessionFactory();
         }
+    }
+
+    private static void createSessionFactory() {
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        Properties hibernateProperty = new Properties();
+        try {
+            hibernateProperty.load(classLoader.getResourceAsStream("h2.properties"));
+        } catch (IOException e) {
+            log.error("Error with configure file for hibernate");
+        }
+        sessionFactory = new Configuration()
+                .addProperties(hibernateProperty)
+                .addAnnotatedClass(Player.class)
+                .addAnnotatedClass(MatchScoreModel.class)
+                .buildSessionFactory();
     }
 
     public static void closeSessionFactory() {

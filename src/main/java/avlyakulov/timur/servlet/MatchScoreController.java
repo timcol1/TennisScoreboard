@@ -58,6 +58,7 @@ public class MatchScoreController extends HttpServlet {
             //todo make model for response finished match
             MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
             req.setAttribute("match", matchInProgressResponse);
+            //todo fix html because it doesn't show the score of match
             req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);
         } else {
             MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
