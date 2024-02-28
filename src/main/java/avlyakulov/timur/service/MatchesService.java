@@ -3,7 +3,7 @@ package avlyakulov.timur.service;
 import avlyakulov.timur.dto.MatchScoreModelResponse;
 import avlyakulov.timur.mapper.MatchMapper;
 import avlyakulov.timur.model.MatchScoreModel;
-import avlyakulov.timur.util.HibernateUtilH2;
+import avlyakulov.timur.util.HibernateSingletonUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -17,7 +17,7 @@ public class MatchesService {
     private final int matchesPerPage = 5;
 
     public MatchesService() {
-        this.sessionFactory = HibernateUtilH2.getSessionFactory();
+        this.sessionFactory = HibernateSingletonUtil.getSessionFactory();
     }
 
     public List<MatchScoreModelResponse> getMatchesByOffsetAndLimit() {
