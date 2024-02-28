@@ -20,7 +20,6 @@ public class MatchesService {
         this.sessionFactory = HibernateUtilH2.getSessionFactory();
     }
 
-    //todo make matchResponse because we don't need all stuff
     public List<MatchScoreModelResponse> getMatchesByOffsetAndLimit() {
         try (Session session = sessionFactory.openSession()) {
             Query<MatchScoreModel> hqlFindAllMatches = session.createNamedQuery("HQL_FindAllMatches", MatchScoreModel.class)
