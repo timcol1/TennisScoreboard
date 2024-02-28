@@ -1,7 +1,7 @@
 package avlyakulov.timur.service;
 
 import avlyakulov.timur.model.Player;
-import avlyakulov.timur.util.HibernateUtilH2;
+import avlyakulov.timur.util.HibernateSingletonUtil;
 import jakarta.persistence.NoResultException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
@@ -12,7 +12,7 @@ public class PlayerService {
     private final SessionFactory sessionFactory;
 
     public PlayerService() {
-        sessionFactory = HibernateUtilH2.getSessionFactory();
+        sessionFactory = HibernateSingletonUtil.getSessionFactory();
     }
 
     public int getPlayerByNameOrCreateHimIfNotExist(Player player) {

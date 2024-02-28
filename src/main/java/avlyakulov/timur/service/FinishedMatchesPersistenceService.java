@@ -1,7 +1,7 @@
 package avlyakulov.timur.service;
 
 import avlyakulov.timur.model.*;
-import avlyakulov.timur.util.HibernateUtilH2;
+import avlyakulov.timur.util.HibernateSingletonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,10 +13,10 @@ public class FinishedMatchesPersistenceService {
     private final SessionFactory sessionFactory;
 
     public FinishedMatchesPersistenceService() {
-        this.sessionFactory = HibernateUtilH2.getSessionFactory();
+        this.sessionFactory = HibernateSingletonUtil.getSessionFactory();
     }
 
-    //todo delete match from in memory collection Map
+
     public void saveMatch(UUID matchId, Player winner) {
         Match match = MatchesInProgress.getMatchById(matchId);
         try (Session session = sessionFactory.openSession()) {
