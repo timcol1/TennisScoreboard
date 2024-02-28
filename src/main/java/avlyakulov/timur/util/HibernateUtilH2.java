@@ -14,9 +14,16 @@ public class HibernateUtilH2 {
 
     private static SessionFactory sessionFactory;
 
+    public static void initSessionFactory() {
+        isSessionFactoryCreatedAndCreateItIfNot();
+    }
 
-    //todo when the program finished close session factory
     public static SessionFactory getSessionFactory() {
+        isSessionFactoryCreatedAndCreateItIfNot();
+        return sessionFactory;
+    }
+
+    private static void isSessionFactoryCreatedAndCreateItIfNot() {
         if (sessionFactory == null) {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
             Properties hibernateProperty = new Properties();
@@ -31,6 +38,11 @@ public class HibernateUtilH2 {
                     .addAnnotatedClass(MatchScoreModel.class)
                     .buildSessionFactory();
         }
-        return sessionFactory;
+    }
+
+    public static void closeSessionFactory() {
+        if (sessionFactory != null && !sessionFactory.isClosed()) {
+            sessionFactory.close();
+        }
     }
 }
