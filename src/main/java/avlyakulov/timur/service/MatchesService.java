@@ -26,7 +26,7 @@ public class MatchesService {
                     .setFirstResult(0)
                     .setMaxResults(matchesPerPage);
 
-            return MatchMapper.INSTANCE.mapToListMatchFinishedResponse(hqlFindAllMatches.list());
+            return MatchMapper.INSTANCE.mapToListMatchScoreModelResponse(hqlFindAllMatches.list());
         }
     }
 
@@ -36,7 +36,7 @@ public class MatchesService {
                     .setFirstResult((offset - 1) * 5)
                     .setMaxResults(matchesPerPage);
 
-            return MatchMapper.INSTANCE.mapToListMatchFinishedResponse(hqlFindAllMatches.list());
+            return MatchMapper.INSTANCE.mapToListMatchScoreModelResponse(hqlFindAllMatches.list());
         }
     }
 }

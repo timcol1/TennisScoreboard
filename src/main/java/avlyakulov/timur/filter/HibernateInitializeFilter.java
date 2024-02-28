@@ -13,8 +13,8 @@ import java.io.IOException;
 public class HibernateInitializeFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        log.info("HibernateInitializeFilter filter was created and initialize Hibernate connection");
         HibernateSingletonUtil.initSessionFactory(DatabaseType.H2);
+        log.info("HibernateInitializeFilter filter was created and initialize Hibernate connection");
     }
 
     @Override
@@ -25,7 +25,7 @@ public class HibernateInitializeFilter implements Filter {
 
     @Override
     public void destroy() {
-        log.info("HibernateInitializeFilter filter was created and close Hibernate connection");
         HibernateSingletonUtil.closeSessionFactory();
+        log.info("HibernateInitializeFilter filter was destroyed and closed Hibernate connection");
     }
 }

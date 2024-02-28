@@ -1,10 +1,10 @@
 package avlyakulov.timur.servlet;
 
+import avlyakulov.timur.dto.MatchFinishedResponse;
 import avlyakulov.timur.dto.MatchInProgressResponse;
 import avlyakulov.timur.model.Match;
 import avlyakulov.timur.model.MatchesInProgress;
 import avlyakulov.timur.model.Player;
-import avlyakulov.timur.model.State;
 import avlyakulov.timur.service.FinishedMatchesPersistenceService;
 import avlyakulov.timur.service.MatchInProgressService;
 import avlyakulov.timur.service.MatchScoreCalculationService;
@@ -52,16 +52,12 @@ public class MatchScoreController extends HttpServlet {
         Match match = MatchesInProgress.getMatchById(matchId);
         if (finishedMatchesPersistenceService.checkMatchFinished(match)) {
             Player winner = getPlayerWinner(match);
+            MatchFinishedResponse matchFinished = matchInProgressService.getFinishedMatchById(match, winner);
+            req.setAttribute("match", matchFinished);
             finishedMatchesPersistenceService.saveMatch(matchId, winner);
-            String winnerName = winner.getName();
-            req.setAttribute("winnerName", winnerName);
-            //todo make model for response finished match
-            MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
-            req.setAttribute("match", matchInProgressResponse);
-            //todo fix html because it doesn't show the score of match
             req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);
         } else {
-            MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
+            MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(match);
             req.setAttribute("match", matchInProgressResponse);
             req.getRequestDispatcher("/match.jsp").forward(req, resp);
         }

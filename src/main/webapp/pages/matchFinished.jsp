@@ -30,25 +30,25 @@
     <div class="player player1">
         <div class="name">
             <h1>Player</h1>
-            <h1>${match.getPlayerOne().getName()}</h1>
+            <h1>${match.getPlayerOneName()}</h1>
         </div>
         <div class="sets">
             <h1>Sets</h1>
-            <h1>${match.getSetPlayerOne()}</h1>
+            <h1>${match.getPlayerOneSet()}</h1>
         </div>
     </div>
     <div class="sign">
-        <h1>Match finished! ${winnerName} wins</h1>
+        <h1>Match finished! ${match.getWinnerName()} wins</h1>
     </div>
     <div class="player player2">
         <div class="sets">
             <h1>Sets</h1>
-            <h1>${match.getSetPlayerTwo()}
+            <h1>${match.getPlayerTwoSet()}
             </h1>
         </div>
         <div class="name">
             <h1>Player</h1>
-            <h1>${match.getPlayerTwo().getName()}
+            <h1>${match.getPlayerTwoName()}
             </h1>
         </div>
     </div>
