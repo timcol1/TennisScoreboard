@@ -1,13 +1,15 @@
 package avlyakulov.timur.dto;
 
 import avlyakulov.timur.model.Player;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class MatchInProgressResponse {
-    //todo create mapstruct mapper
+
     private Player playerOne;
 
     private Player playerTwo;
@@ -23,15 +25,4 @@ public class MatchInProgressResponse {
     private int setPlayerOne;
 
     private int setPlayerTwo;
-
-    public MatchInProgressResponse(Player playerOne, Player playerTwo, int pointPlayerOne, int pointPlayerTwo, int gamePlayerOne, int gamePlayerTwo, int setPlayerOne, int setPlayerTwo) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-        this.pointPlayerOne = pointPlayerOne;
-        this.pointPlayerTwo = pointPlayerTwo;
-        this.gamePlayerOne = gamePlayerOne;
-        this.gamePlayerTwo = gamePlayerTwo;
-        this.setPlayerOne = setPlayerOne;
-        this.setPlayerTwo = setPlayerTwo;
-    }
 }

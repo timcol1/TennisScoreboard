@@ -48,9 +48,9 @@
                 <div class="table main">
                     <c:forEach var="match" items="${matches}">
                         <div class="id">${match.getId()}</div>
-                        <div class="player1">${match.getPlayerOne().getName()}</div>
-                        <div class="player2">${match.getPlayerTwo().getName()}</div>
-                        <div class="winner">${match.getWinner().getName()}</div>
+                        <div class="player1">${match.getPlayerOneName()}</div>
+                        <div class="player2">${match.getPlayerTwoName()}</div>
+                        <div class="winner">${match.getWinnerName()}</div>
                     </c:forEach>
                 </div>
             </div>
