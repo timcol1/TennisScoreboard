@@ -1,6 +1,6 @@
 package avlyakulov.timur.servlet;
 
-import avlyakulov.timur.dto.MatchResponse;
+import avlyakulov.timur.dto.MatchInProgressResponse;
 import avlyakulov.timur.model.Match;
 import avlyakulov.timur.model.MatchesInProgress;
 import avlyakulov.timur.model.Player;
@@ -35,8 +35,8 @@ public class MatchScoreController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
-        MatchResponse matchResponse = matchInProgressService.getMatchById(matchId);
-        req.setAttribute("match", matchResponse);
+        MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
+        req.setAttribute("match", matchInProgressResponse);
         req.getRequestDispatcher("/match.jsp").forward(req, resp);
     }
 
@@ -46,17 +46,18 @@ public class MatchScoreController extends HttpServlet {
         int winnerId = Integer.parseInt(req.getParameter("winnerId"));
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
         Match match = MatchesInProgress.getMatchById(matchId);
+        //todo make this logic in service class finished persistence service
         if (match.getState().equals(State.FININSHED)) {
             Player winner = getPlayerWinner(match);
             finishedMatchesPersistenceService.saveMatch(match, winner);
             String winnerName = winner.getName();
             req.setAttribute("winnerName", winnerName);
-            MatchResponse matchResponse = matchInProgressService.getMatchById(matchId);
-            req.setAttribute("match", matchResponse);
+            MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
+            req.setAttribute("match", matchInProgressResponse);
             req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);
         } else {
-            MatchResponse matchResponse = matchInProgressService.getMatchById(matchId);
-            req.setAttribute("match", matchResponse);
+            MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
+            req.setAttribute("match", matchInProgressResponse);
             req.getRequestDispatcher("/match.jsp").forward(req, resp);
         }
     }
