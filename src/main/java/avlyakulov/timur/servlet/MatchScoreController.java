@@ -46,8 +46,7 @@ public class MatchScoreController extends HttpServlet {
         int winnerId = Integer.parseInt(req.getParameter("winnerId"));
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
         Match match = MatchesInProgress.getMatchById(matchId);
-        //todo make this logic in service class finished persistence service
-        if (match.getState().equals(State.FININSHED)) {
+        if (finishedMatchesPersistenceService.checkMatchFinished(match)) {
             Player winner = getPlayerWinner(match);
             finishedMatchesPersistenceService.saveMatch(match, winner);
             String winnerName = winner.getName();

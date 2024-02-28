@@ -1,13 +1,12 @@
 package avlyakulov.timur.service;
 
-import avlyakulov.timur.model.Match;
-import avlyakulov.timur.model.MatchScoreModel;
-import avlyakulov.timur.model.MatchesInProgress;
-import avlyakulov.timur.model.Player;
+import avlyakulov.timur.model.*;
 import avlyakulov.timur.util.HibernateUtilH2;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import java.util.UUID;
 
 @Slf4j
 public class FinishedMatchesPersistenceService {
@@ -25,5 +24,13 @@ public class FinishedMatchesPersistenceService {
             session.persist(matchFinished);
             session.getTransaction().commit();//закрываем транзакцию
         }
+    }
+
+    public boolean checkMatchFinished(Match match) {
+        return match.getState().equals(State.FININSHED);
+    }
+
+    private void deleteMatchFromMemory(UUID matchId) {
+        MatchesInProgress.deleteMatchById(matchId);
     }
 }

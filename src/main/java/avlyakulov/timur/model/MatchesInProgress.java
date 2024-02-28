@@ -18,4 +18,8 @@ public class MatchesInProgress {
     public static void updateMatch(UUID matchId, Match match) {
         matchesInProgress.put(matchId, match);
     }
+
+    public static void deleteMatchById(UUID matchId) {
+        matchesInProgress.remove(matchId);
+    }
 }
