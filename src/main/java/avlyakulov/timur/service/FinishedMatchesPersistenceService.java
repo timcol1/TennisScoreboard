@@ -17,6 +17,7 @@ public class FinishedMatchesPersistenceService {
         this.sessionFactory = HibernateUtilH2.getSessionFactory();
     }
 
+    //todo delete match from in memory collection Map
     public void saveMatch(Match match, Player winner) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();//открываем транзакцию
