@@ -1,6 +1,6 @@
 package avlyakulov.timur.servlet;
 
-import avlyakulov.timur.dto.MatchResponse;
+import avlyakulov.timur.dto.MatchInProgressResponse;
 import avlyakulov.timur.model.Match;
 import avlyakulov.timur.model.MatchesInProgress;
 import avlyakulov.timur.model.Player;
@@ -35,8 +35,8 @@ public class MatchScoreController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
-        MatchResponse matchResponse = matchInProgressService.getMatchById(matchId);
-        req.setAttribute("match", matchResponse);
+        MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
+        req.setAttribute("match", matchInProgressResponse);
         req.getRequestDispatcher("/match.jsp").forward(req, resp);
     }
 
@@ -52,12 +52,12 @@ public class MatchScoreController extends HttpServlet {
             finishedMatchesPersistenceService.saveMatch(match, winner);
             String winnerName = winner.getName();
             req.setAttribute("winnerName", winnerName);
-            MatchResponse matchResponse = matchInProgressService.getMatchById(matchId);
-            req.setAttribute("match", matchResponse);
+            MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
+            req.setAttribute("match", matchInProgressResponse);
             req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);
         } else {
-            MatchResponse matchResponse = matchInProgressService.getMatchById(matchId);
-            req.setAttribute("match", matchResponse);
+            MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
+            req.setAttribute("match", matchInProgressResponse);
             req.getRequestDispatcher("/match.jsp").forward(req, resp);
         }
     }
