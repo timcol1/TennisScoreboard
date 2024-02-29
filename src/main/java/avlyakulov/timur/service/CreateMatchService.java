@@ -14,6 +14,8 @@ public class CreateMatchService {
     }
 
     public UUID createMatch(String playerOneName, String playerTwoName) {
+        playerOneName = capitalizeFirstLetter(playerOneName);
+        playerTwoName = capitalizeFirstLetter(playerTwoName);
         Match match = addPlayersToMatch(playerOneName, playerTwoName);
         UUID matchId = UUID.randomUUID();
         MatchesInProgress.createMatch(matchId, match);
@@ -27,5 +29,9 @@ public class CreateMatchService {
         playerTwo.setId(playerService.getPlayerByNameOrCreateHimIfNotExist(playerTwo));
 
         return new Match(playerOne, playerTwo);
+    }
+
+    private String capitalizeFirstLetter(String input) {
+        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
     }
 }

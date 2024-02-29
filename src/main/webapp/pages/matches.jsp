@@ -75,5 +75,6 @@
         <a href="https://www.linkedin.com/in/timmawv/">Linkedin</a>
     </div>
 </footer>
+<script type="text/javascript" src="${pageContext.request.contextPath}/pages/js/buttonMatchesChecker.js"></script>
 </body>
 </html>
