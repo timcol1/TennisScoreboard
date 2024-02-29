@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import java.util.UUID;
 
 @Slf4j
+//todo check all logs and add necessary logs
 public class FinishedMatchesPersistenceService {
     private final SessionFactory sessionFactory;
 

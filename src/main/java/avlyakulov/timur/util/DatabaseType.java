@@ -4,7 +4,7 @@ public enum DatabaseType {
     H2("h2.properties"),
     POSTGRES("postgres.properties");
 
-    private String propertyFileName;
+    private final String propertyFileName;
 
     DatabaseType(String propertyFileName) {
         this.propertyFileName = propertyFileName;

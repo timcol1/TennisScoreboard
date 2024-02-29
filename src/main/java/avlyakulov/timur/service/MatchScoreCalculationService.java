@@ -37,10 +37,11 @@ public class MatchScoreCalculationService {
             case FININSHED -> {
                 return;
             }
-            default -> throw new RuntimeException("Something went wrong in addPointToWinnerOfGame() or you in finished state try to add point");
+            default ->
+                    throw new RuntimeException("Something went wrong in addPointToWinnerOfGame() or you in finished state try to add point");
         }
         updateGameScore(match);
-        setOrUpdateGameStatus(match);
+        updateGameStatus(match);
         MatchesInProgress.updateMatch(matchId, match);
     }
 
@@ -60,7 +61,7 @@ public class MatchScoreCalculationService {
         return ++playerPoint;
     }
 
-    private void setOrUpdateGameStatus(Match match) {
+    private void updateGameStatus(Match match) {
         if (match.getPointPlayerOne() == 40 && match.getPointPlayerTwo() == 40) {
             match.setState(State.ADVANTAGE);
         } else if (match.getGamePlayerOne() == 6 && match.getGamePlayerTwo() == 6) {
@@ -76,24 +77,23 @@ public class MatchScoreCalculationService {
             case GAME -> {
                 if (match.getPointPlayerOne() == 50) {
                     resetPlayersPoints(match);
-                    match.setGamePlayerOne(match.getGamePlayerOne() + 1);
+                    increasePlayerGame(PlayerNumber.PLAYER_ONE, match);
                 } else if (match.getPointPlayerTwo() == 50) {
                     resetPlayersPoints(match);
-                    //todo write a function to increase a game player one or two
-                    match.setGamePlayerTwo(match.getGamePlayerTwo() + 1);
+                    increasePlayerGame(PlayerNumber.PLAYER_TWO, match);
                 }
                 if (match.getGamePlayerOne() == 6 && match.getGamePlayerTwo() < 5) {
                     resetPlayersGames(match);
-                    match.setSetPlayerOne(match.getSetPlayerOne() + 1);
+                    increasePlayerSet(PlayerNumber.PLAYER_ONE, match);
                 } else if (match.getGamePlayerOne() == 7 && match.getGamePlayerTwo() == 5) {
                     resetPlayersGames(match);
-                    match.setSetPlayerOne(match.getSetPlayerOne() + 1);
+                    increasePlayerSet(PlayerNumber.PLAYER_ONE, match);
                 } else if (match.getGamePlayerTwo() == 6 && match.getGamePlayerOne() < 5) {
                     resetPlayersGames(match);
-                    match.setSetPlayerTwo(match.getSetPlayerTwo() + 1);
+                    increasePlayerSet(PlayerNumber.PLAYER_TWO, match);
                 } else if (match.getGamePlayerTwo() == 7 && match.getGamePlayerOne() == 5) {
                     resetPlayersGames(match);
-                    match.setSetPlayerTwo(match.getSetPlayerTwo() + 1);
+                    increasePlayerSet(PlayerNumber.PLAYER_TWO, match);
                 }
             }
             case ADVANTAGE -> {
@@ -102,22 +102,22 @@ public class MatchScoreCalculationService {
                     match.setPointPlayerTwo(40);
                 } else if (match.getPointPlayerOne() == 50) {
                     resetPlayersPoints(match);
-                    match.setGamePlayerOne(match.getGamePlayerOne() + 1);
+                    increasePlayerGame(PlayerNumber.PLAYER_ONE, match);
                     match.setState(State.GAME);
                 } else if (match.getPointPlayerTwo() == 50) {
                     resetPlayersPoints(match);
-                    match.setGamePlayerOne(match.getGamePlayerTwo() + 1);
+                    increasePlayerGame(PlayerNumber.PLAYER_TWO, match);
                     match.setState(State.GAME);
                 }
             }
             case TIE -> {
                 if (match.getPointPlayerOne() == 7) {
                     resetPlayersPointsAndGames(match);
-                    match.setSetPlayerOne(match.getSetPlayerOne() + 1);
+                    increasePlayerSet(PlayerNumber.PLAYER_ONE, match);
                     match.setState(State.GAME);
                 } else if (match.getPointPlayerTwo() == 7) {
                     resetPlayersPointsAndGames(match);
-                    match.setSetPlayerTwo(match.getSetPlayerTwo() + 1);
+                    increasePlayerSet(PlayerNumber.PLAYER_TWO, match);
                     match.setState(State.GAME);
                 }
             }
@@ -140,4 +140,25 @@ public class MatchScoreCalculationService {
         match.setGamePlayerOne(0);
         match.setGamePlayerTwo(0);
     }
+
+    private void increasePlayerGame(PlayerNumber playerNumber, Match match) {
+        switch (playerNumber) {
+            case PLAYER_ONE -> match.setGamePlayerOne(match.getGamePlayerOne() + 1);
+
+            case PLAYER_TWO -> match.setGamePlayerTwo(match.getGamePlayerTwo() + 1);
+        }
+    }
+
+    private void increasePlayerSet(PlayerNumber playerNumber, Match match) {
+        switch (playerNumber) {
+            case PLAYER_ONE -> match.setSetPlayerOne(match.getSetPlayerOne() + 1);
+
+            case PLAYER_TWO -> match.setSetPlayerTwo(match.getSetPlayerTwo() + 1);
+        }
+    }
+}
+
+enum PlayerNumber {
+    PLAYER_ONE,
+    PLAYER_TWO
 }
