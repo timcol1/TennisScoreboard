@@ -13,3 +13,15 @@ window.addEventListener('pageshow', function (event) {
         buttonPrevious.disabled = true;
     }
 });
+
+window.addEventListener('pageshow', function (event) {
+    var elementsWithClass = document.querySelectorAll('.id');
+
+    // Получение кнопки
+    var buttonNext = document.getElementById('butt-next');
+
+    // Установка значения атрибута disabled в зависимости от количества элементов
+    if (elementsWithClass.length < 5) {
+        buttonNext.disabled = true;
+    }
+});

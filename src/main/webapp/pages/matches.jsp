@@ -56,10 +56,10 @@
             </div>
             <div class="table footer">
                 <form method="GET" action="/matches">
-                    <button class="button button-previous" id="butt-prev" name="page" value="${page - 1}">Previous</button>
+                    <button class="button button-previous" id="butt-prev" name="page" value="${page - 1}">Previous
+                    </button>
                     <button class="button button-page" disabled>${page}</button>
-                    <button class="button button-next" name="page" value="${page + 1}">Next</button>
-
+                    <button class="button button-next" id="butt-next" name="page" value="${page + 1}">Next</button>
                 </form>
             </div>
         </div>
