@@ -9,6 +9,7 @@
     <style>
         <%@include file="/pages/css/mainPage.css" %>
     </style>
+    <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <header class="header">
