@@ -37,7 +37,7 @@
                 <div>
                     <p><b>New Match</b></p>
                 </div>
-                <button type="submit"><b>START</b></button>
+                <button type="submit" onclick="validateForm()"><b>START</b></button>
             </div>
             <div class="player">
                 <label for="Player2"><b>Enter Player 2 name</b>
@@ -57,5 +57,6 @@
         <a href="https://www.linkedin.com/in/timmawv/">Linkedin</a>
     </div>
 </footer>
+<script type="text/javascript" src="${pageContext.request.contextPath}/pages/js/validateFormCreateMatch.js"></script>
 </body>
 </html>
