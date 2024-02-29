@@ -31,24 +31,25 @@ body {
 
 .header {
     background-color: rgba(173, 255, 47, 0.6);
-    min-height: 20%;
+    min-height: 10%;
     display: grid;
-    grid-template-columns: 30% 23% 23% 23%;
-    align-items: center;
-    justify-content: center;
+    grid-template-columns: 30% 25% 15% 30%;
     width: auto;
-    margin: 0;
 }
 
 .header div {
     text-align: center;
-    height: 70%;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 30px;
+    margin-left: 30px;
 }
 
 .header .mint {
     height: 10%;
     font-family: 'Rocher', sans-serif;
     font-palette: --Mint;
+
 }
 
 
@@ -56,18 +57,7 @@ body {
     text-decoration: none;
 }
 
-.header .ordinal a {
-    color: green;
-}
-
-.header .ordinary {
-    font-family: 'Rocher', sans-serif;
-    font-palette: --Mint;
-    margin-top: 54px;
-    text-align: center;
-}
-
-.header h1 img {
+.header img {
     height: 64px;
     width: 64px;
 }
@@ -76,7 +66,7 @@ main {
     background-image: url('/img/court.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    min-height: calc(100% - 35%);
+    min-height: calc(100% - 25%);
     margin-bottom: -1px;
 }
 
