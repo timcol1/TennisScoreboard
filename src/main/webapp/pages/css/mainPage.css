@@ -29,15 +29,9 @@ body {
     flex-direction: column;
 }
 
-body, .header, main, footer {
-    /*border: 2px solid black;*/
-}
-
-
 .header {
     background-color: rgba(173, 255, 47, 0.6);
-    min-height: 10%;
-    flex-shrink: 0;
+    min-height: 20%;
     display: grid;
     grid-template-columns: 30% 23% 23% 23%;
     align-items: center;
@@ -78,25 +72,19 @@ body, .header, main, footer {
     width: 64px;
 }
 
-
 main {
-    flex-grow: 1;
     background-image: url('/img/court.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    min-height: calc(100% - 35%);
     margin-bottom: -1px;
-    min-height: 70%;
 }
 
-
-
 footer {
-    height: auto;
     background-color: #1e1e1e;
-    flex-shrink: 0;
     display: grid;
     grid-template-columns: 50% 50%;
-    min-height: 10%;
+    min-height: 15%;
 }
 
 footer div {

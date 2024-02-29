@@ -8,7 +8,6 @@ html, body {
 }
 
 .wrapper {
-    min-height: 75px;
     background-color: darkblue;
     display: flex;
     width: auto;
@@ -33,17 +32,17 @@ html, body {
     margin: auto;
 }
 
-main {
+.buttons {
+    width: 100%;
     display: flex;
     align-items: flex-end;
 }
 
-.buttons {
-    min-height: 10%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    position: relative;
+.buttons .button_wrapper {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .buttons button {
@@ -51,15 +50,5 @@ main {
     background-color: blue;
     color: white;
     border-radius: 10px;
-    min-height: 50px;
-}
-
-.buttons .button1 {
-    position: absolute;
-    left: 25%;
-}
-
-.buttons .button2 {
-    position: absolute;
-    right: 25%;
+    padding: 10px;
 }

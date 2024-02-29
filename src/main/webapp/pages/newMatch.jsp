@@ -10,6 +10,7 @@
         <%@include file="/pages/css/mainPage.css" %>
         <%@include file="/pages/css/newMatch.css" %>
     </style>
+    <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <header class="header">
