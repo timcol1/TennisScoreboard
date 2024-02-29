@@ -30,11 +30,12 @@
     <div class="wrapper">
         <h1 class="sign">Finished Matches</h1>
         <div class="head">
-            <form method="POST" action="/matches">
+            <form method="GET" action="/matches">
                 <label for="namePlayer">Name: </label>
-                <input id="namePlayer" type="text">
+                <input type="hidden" name="page" value="${page}">
+                <input id="namePlayer" name="filter_by_player_name" type="text" required>
                 <button class="button button-search" type="submit">Search</button>
-                <button class="button button-clear" type="submit">Clear</button>
+                <button class="button button-clear" type="button">Clear</button>
             </form>
         </div>
         <div class="table">

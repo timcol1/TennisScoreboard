@@ -23,12 +23,15 @@ public class MatchesController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pageStr = req.getParameter("page");
+        String playerName = req.getParameter("filter_by_player_name");
         List<MatchScoreModelResponse> matches;
-        if (pageStr == null || pageStr.isBlank() || !pageStr.matches("[0-9]?[0-9]")) {
+        if ((pageStr == null || pageStr.isBlank() || !pageStr.matches("[0-9]?[0-9]")) && playerName == null) {
             matches = matchesService.getMatchesByOffsetAndLimit();
             req.setAttribute("page", 1);
+        } else if (playerName != null) {
+            matches = matchesService.getMatchesByOffsetAndLimitAndName(1, playerName);
+            req.setAttribute("page", 1);
         } else {
-            //todo make button previous disabled when it is first page
             int page = validatePageNumber(Integer.parseInt(req.getParameter("page")));
             matches = matchesService.getMatchesByOffsetAndLimit(page);
             req.setAttribute("page", page);
@@ -40,4 +43,5 @@ public class MatchesController extends HttpServlet {
     private int validatePageNumber(int pageNumber) {
         return pageNumber < 1 ? 1 : pageNumber;
     }
+
 }
