@@ -30,7 +30,9 @@ public class FinishedMatchesPersistenceService {
     }
 
     public boolean checkMatchFinished(Match match) {
-        if (match == null || match.getState().equals(State.FINISHED)) {
+        if (match == null) {
+            return true;
+        } else if (match.getState().equals(State.FINISHED)) {
             return true;
         } else {
             return false;
@@ -39,7 +41,9 @@ public class FinishedMatchesPersistenceService {
 
     public boolean checkMatchFinished(UUID matchId) {
         Match match = MatchesInProgress.getMatchById(matchId);
-        if (match == null || match.getState().equals(State.FINISHED)) {
+        if (match == null) {
+            return true;
+        } else if (match.getState().equals(State.FINISHED)) {
             return true;
         } else {
             return false;

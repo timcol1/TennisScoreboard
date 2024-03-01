@@ -51,6 +51,7 @@ public class MatchScoreController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
         int winnerId = Integer.parseInt(req.getParameter("winnerId"));
+        //todo fix this moment from deployed server i get an error when it tries to get a null match
         matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
         Match match = MatchesInProgress.getMatchById(matchId);
         if (finishedMatchesPersistenceService.checkMatchFinished(match)) {
