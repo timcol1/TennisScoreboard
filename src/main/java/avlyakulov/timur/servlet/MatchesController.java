@@ -55,5 +55,4 @@ public class MatchesController extends HttpServlet {
     private int validatePageNumber(int pageNumber) {
         return pageNumber < 1 ? 1 : pageNumber;
     }
-
 }

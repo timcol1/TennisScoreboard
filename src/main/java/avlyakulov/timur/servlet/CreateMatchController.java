@@ -43,6 +43,6 @@ public class CreateMatchController extends HttpServlet {
         UUID matchId = createMatchService.createMatch(playerOneName, playerTwoName);
         log.info("We created match in progress with such id {}", matchId);
 
-        resp.sendRedirect("/match-score?uuid=" + matchId);
+        resp.sendRedirect("/TennisScoreboard-1.0/match-score?uuid=" + matchId);
     }
 }

@@ -5,7 +5,7 @@
 <html lang="eu">
 <head>
     <title>New Match</title>
-    <link rel="shortcut icon" href="../img/tennis_ball.png"/>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/889/889494.png"/>
     <style>
         <%@include file="/pages/css/mainPage.css" %>
         <%@include file="/pages/css/newMatch.css" %>
@@ -14,20 +14,19 @@
 </head>
 <body>
 <header class="header">
-    <div><img src="../img/tennis_racket.png" alt="tennis racket">
-        <h1 class="mint"><a href="http://localhost:8080/main-page">Tennis Scoreboard</a></h1>
+    <div><img src="https://cdn.icon-icons.com/icons2/3664/PNG/512/tennis_racket_ball_sport_game_icon_228593.png" alt="tennis racket">
+        <h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/main-page">Tennis Scoreboard</a></h1>
     </div>
-    <div><h1 class="mint"><a href="http://localhost:8080/new-match">New Match</a></h1></div>
-    <div><h1 class="mint"><a href="http://localhost:8080/matches">Matches</a></h1></div>
+    <div><h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/new-match">New Match</a></h1></div>
+    <div><h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/matches">Matches</a></h1></div>
     <div><h1 class="mint"><%
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, HH:mm", Locale.ENGLISH);
         out.print(LocalDateTime.now().format(formatter));
     %>
     </h1></div>
 </header>
-
 <main>
-    <form method="POST" action="/new-match">
+    <form method="POST" action="/TennisScoreboard-1.0/new-match">
         <div class="wrapper">
             <div class="player">
                 <label for="Player1"><b>Enter Player 1 name</b>
@@ -54,7 +53,7 @@
         <p>© 2024 Avlyakulov Timur</p>
     </div>
     <div class="sec_block">
-        <a href="https://github.com/timcol1">Git</a>
+        <a href="https://github.com/timmawv">Git</a>
         <a href="https://www.linkedin.com/in/timmawv/">Linkedin</a>
     </div>
 </footer>

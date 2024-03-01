@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Matches</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/889/889494.png"/>
     <style>
         <%@include file="/pages/css/mainPage.css" %>
         <%@include file="/pages/css/matches.css" %>
@@ -15,11 +16,11 @@
 <body>
 
 <header class="header">
-    <div><img src="../img/tennis_racket.png" alt="tennis racket">
-        <h1 class="mint"><a href="http://localhost:8080/main-page">Tennis Scoreboard</a></h1>
+    <div><img src="https://cdn.icon-icons.com/icons2/3664/PNG/512/tennis_racket_ball_sport_game_icon_228593.png" alt="tennis racket">
+        <h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/main-page">Tennis Scoreboard</a></h1>
     </div>
-    <div><h1 class="mint"><a href="http://localhost:8080/new-match">New Match</a></h1></div>
-    <div><h1 class="mint"><a href="http://localhost:8080/matches">Matches</a></h1></div>
+    <div><h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/new-match">New Match</a></h1></div>
+    <div><h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/matches">Matches</a></h1></div>
     <div><h1 class="mint"><%
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, HH:mm", Locale.ENGLISH);
         out.print(LocalDateTime.now().format(formatter));
@@ -31,7 +32,7 @@
     <div class="wrapper">
         <h1 class="sign">Finished Matches</h1>
         <div class="head">
-            <form method="GET" action="/matches">
+            <form method="GET" action="/TennisScoreboard-1.0/matches">
                 <label for="namePlayer">Name: </label>
                 <input id="namePlayer" name="filter_by_player_name" type="text" required>
                 <button class="button button-search" type="submit">Search</button>
@@ -55,7 +56,7 @@
                 </div>
             </div>
             <div class="table footer">
-                <form method="GET" action="/matches">
+                <form method="GET" action="/TennisScoreboard-1.0/matches">
                     <% String playerName = request.getParameter("filter_by_player_name");
                         if (playerName != null) {
                     %>
@@ -85,7 +86,7 @@
         <p>© 2024 Avlyakulov Timur</p>
     </div>
     <div class="sec_block">
-        <a href="https://github.com/timcol1">Git</a>
+        <a href="https://github.com/timmawv">Git</a>
         <a href="https://www.linkedin.com/in/timmawv/">Linkedin</a>
     </div>
 </footer>
