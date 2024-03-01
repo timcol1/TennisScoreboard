@@ -15,10 +15,10 @@
 <header class="header">
 
     <div><img src="https://cdn.icon-icons.com/icons2/3664/PNG/512/tennis_racket_ball_sport_game_icon_228593.png" alt="tennis racket">
-        <h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/main-page">Tennis Scoreboard</a></h1>
+        <h1 class="mint"><a href="/TennisScoreboard-1.0/main-page">Tennis Scoreboard</a></h1>
     </div>
-    <div><h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/new-match">New Match</a></h1></div>
-    <div><h1 class="mint"><a href="http://localhost:8080/TennisScoreboard-1.0/matches">Matches</a></h1></div>
+    <div><h1 class="mint"><a href="/TennisScoreboard-1.0/new-match">New Match</a></h1></div>
+    <div><h1 class="mint"><a href="/TennisScoreboard-1.0/matches">Matches</a></h1></div>
     <div><h1 class="mint"><%
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, HH:mm", Locale.ENGLISH);
         out.print(LocalDateTime.now().format(formatter));
