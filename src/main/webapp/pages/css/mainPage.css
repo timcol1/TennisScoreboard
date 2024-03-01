@@ -32,17 +32,14 @@ body {
 .header {
     background-color: rgba(173, 255, 47, 0.6);
     min-height: 10%;
-    display: grid;
-    grid-template-columns: 30% 25% 15% 30%;
-    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header div {
-    text-align: center;
     display: flex;
-    align-items: flex-end;
-    margin-bottom: 30px;
-    margin-left: 30px;
+    margin: 40px;
 }
 
 .header .mint {
