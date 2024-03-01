@@ -13,4 +13,9 @@ function validateForm() {
         event.preventDefault();
         return;
     }
+
+    if (input1Value.toLowerCase().trim() === input2Value.toLowerCase().trim()) {
+        alert("Name Player 1 can't be equal to name Player 2");
+        event.preventDefault();
+    }
 }
