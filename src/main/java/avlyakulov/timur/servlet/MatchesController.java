@@ -25,19 +25,31 @@ public class MatchesController extends HttpServlet {
         String pageStr = req.getParameter("page");
         String playerName = req.getParameter("filter_by_player_name");
         List<MatchScoreModelResponse> matches;
-        if ((pageStr == null || pageStr.isBlank() || !pageStr.matches("[0-9]?[0-9]")) && playerName == null) {
+        if (isPageStringNotValid(pageStr) && playerName == null) {
             matches = matchesService.getMatchesByOffsetAndLimit();
             req.setAttribute("page", 1);
-        } else if (playerName != null) {
+        } else if (!isPageStringNotValid(pageStr) && playerName == null) {
+            int page = validatePageNumber(Integer.parseInt(pageStr));
+            matches = matchesService.getMatchesByOffsetAndLimit(page);
+            req.setAttribute("page", page);
+        } else if (isPageStringNotValid(pageStr) && playerName != null) {
             matches = matchesService.getMatchesByOffsetAndLimitAndName(1, playerName);
             req.setAttribute("page", 1);
         } else {
-            int page = validatePageNumber(Integer.parseInt(req.getParameter("page")));
-            matches = matchesService.getMatchesByOffsetAndLimit(page);
+            int page = validatePageNumber(Integer.parseInt(pageStr));
+            matches = matchesService.getMatchesByOffsetAndLimitAndName(page, playerName);
             req.setAttribute("page", page);
         }
         req.setAttribute("matches", matches);
         req.getRequestDispatcher("/matches.jsp").forward(req, resp);
+    }
+
+    private boolean isPageStringNotValid(String pageStr) {
+        if (pageStr == null || pageStr.isBlank() || !pageStr.matches("[0-9]?[0-9]")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private int validatePageNumber(int pageNumber) {

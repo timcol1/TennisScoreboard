@@ -33,7 +33,6 @@
         <div class="head">
             <form method="GET" action="/matches">
                 <label for="namePlayer">Name: </label>
-                <input type="hidden" name="page" value="${page}">
                 <input id="namePlayer" name="filter_by_player_name" type="text" required>
                 <button class="button button-search" type="submit">Search</button>
             </form>
@@ -57,7 +56,11 @@
             </div>
             <div class="table footer">
                 <form method="GET" action="/matches">
-
+                    <% String playerName = request.getParameter("filter_by_player_name");
+                        if (playerName != null) {
+                    %>
+                    <input type="hidden" name="filter_by_player_name" value="<%= playerName %>">
+                    <% } %>
                     <button class="button button-previous" id="butt-prev" name="page" value="${page - 1}"
                             <% String pageStr = request.getParameter("page");
                                 if (pageStr != null) {
@@ -67,8 +70,7 @@
                     } else { %>
                             disabled
                             <% } %>
-                    >Previous
-                    </button>
+                    >Previous </button>
                     <button class="button button-page" disabled>${page}</button>
                     <button class="button button-next" id="butt-next" name="page" value="${page + 1}"
                     ${matches.size() < 5 ? "disabled" : "" }>Next</button>
