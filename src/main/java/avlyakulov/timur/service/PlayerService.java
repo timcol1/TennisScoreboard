@@ -22,7 +22,7 @@ public class PlayerService {
             log.info("This player with such name {} exists", player.getName());
             return playerId;
         } catch (NoResultException e) {
-            log.error("Player with such name {} doesn't exists in db", player.getName());
+            log.info("Player with such name {} doesn't exists in db", player.getName());
             playerId = savePlayer(player).getId();
             log.info("We are creating a player with such name {}", player.getName());
             return playerId;

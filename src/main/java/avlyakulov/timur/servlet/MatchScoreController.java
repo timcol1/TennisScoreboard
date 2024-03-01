@@ -51,20 +51,24 @@ public class MatchScoreController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
         int winnerId = Integer.parseInt(req.getParameter("winnerId"));
-        //todo fix this moment from deployed server i get an error when it tries to get a null match
-        matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
-        Match match = MatchesInProgress.getMatchById(matchId);
-        if (finishedMatchesPersistenceService.checkMatchFinished(match)) {
-            Player winner = getPlayerWinner(match);
-            MatchFinishedResponse matchFinished = matchInProgressService.getFinishedMatchById(match, winner);
-            req.setAttribute("match", matchFinished);
-            finishedMatchesPersistenceService.saveMatch(matchId, winner);
-            req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);
-            log.info("Match with such an id {} was finished", matchId);
+        if (finishedMatchesPersistenceService.checkMatchFinished(matchId)) {
+            req.getRequestDispatcher("/match-finished-memory.jsp").forward(req, resp);
+            log.info("User tries to get finished match from memory by matchId in url");
         } else {
-            MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(match);
-            req.setAttribute("match", matchInProgressResponse);
-            req.getRequestDispatcher("/match.jsp").forward(req, resp);
+            matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
+            Match match = MatchesInProgress.getMatchById(matchId);
+            if (finishedMatchesPersistenceService.checkMatchFinished(match)) {
+                Player winner = getPlayerWinner(match);
+                MatchFinishedResponse matchFinished = matchInProgressService.getFinishedMatchById(match, winner);
+                req.setAttribute("match", matchFinished);
+                finishedMatchesPersistenceService.saveMatch(matchId, winner);
+                req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);
+                log.info("Match with such an id {} was finished", matchId);
+            } else {
+                MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(match);
+                req.setAttribute("match", matchInProgressResponse);
+                req.getRequestDispatcher("/match.jsp").forward(req, resp);
+            }
         }
     }
 
