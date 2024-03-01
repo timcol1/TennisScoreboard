@@ -32,11 +32,11 @@ public class HibernateSingletonUtil {
                     .addAnnotatedClass(MatchScoreModel.class)
                     .buildSessionFactory();
         }
-
     }
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
+            log.error("You are trying to get session factory which wasn't initialized");
             throw new RuntimeException("Session factory is not created");
         } else {
             return sessionFactory;

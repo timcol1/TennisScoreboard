@@ -261,6 +261,6 @@ class MatchScoreCalculationServiceTest {
         assertEquals(0, match.getPointPlayerOne());
         assertEquals(0, match.getGamePlayerOne());
         assertEquals(2, match.getSetPlayerOne());
-        assertEquals(State.FININSHED, match.getState());
+        assertEquals(State.FINISHED, match.getState());
     }
 }

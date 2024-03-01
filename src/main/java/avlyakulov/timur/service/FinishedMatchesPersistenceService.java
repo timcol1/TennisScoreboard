@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import java.util.UUID;
 
 @Slf4j
-//todo check all logs and add necessary logs
 public class FinishedMatchesPersistenceService {
     private final SessionFactory sessionFactory;
 
@@ -27,10 +26,11 @@ public class FinishedMatchesPersistenceService {
             session.getTransaction().commit();//закрываем транзакцию
         }
         deleteMatchFromMemory(matchId);
+        log.info("Match with such id {} was deleted from memory", matchId);
     }
 
     public boolean checkMatchFinished(Match match) {
-        if (match == null || match.getState().equals(State.FININSHED)) {
+        if (match == null || match.getState().equals(State.FINISHED)) {
             return true;
         } else {
             return false;
@@ -39,7 +39,7 @@ public class FinishedMatchesPersistenceService {
 
     public boolean checkMatchFinished(UUID matchId) {
         Match match = MatchesInProgress.getMatchById(matchId);
-        if (match == null || match.getState().equals(State.FININSHED)) {
+        if (match == null || match.getState().equals(State.FINISHED)) {
             return true;
         } else {
             return false;

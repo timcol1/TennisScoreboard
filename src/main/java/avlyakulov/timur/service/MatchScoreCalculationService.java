@@ -34,7 +34,7 @@ public class MatchScoreCalculationService {
                     match.setPointPlayerTwo(increasePointPlayerInTie(match.getPointPlayerTwo()));
                 }
             }
-            case FININSHED -> {
+            case FINISHED -> {
                 return;
             }
             default ->
@@ -67,7 +67,7 @@ public class MatchScoreCalculationService {
         } else if (match.getGamePlayerOne() == 6 && match.getGamePlayerTwo() == 6) {
             match.setState(State.TIE);
         } else if (match.getSetPlayerOne() == 2 || match.getSetPlayerTwo() == 2) {
-            match.setState(State.FININSHED);
+            match.setState(State.FINISHED);
             resetPlayersPointsAndGames(match);
         }
     }

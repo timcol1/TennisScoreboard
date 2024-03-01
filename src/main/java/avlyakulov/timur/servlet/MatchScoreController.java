@@ -13,10 +13,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.UUID;
 
+@Slf4j
 @WebServlet(urlPatterns = "/match-score")
 public class MatchScoreController extends HttpServlet {
     private MatchInProgressService matchInProgressService;
@@ -38,6 +40,7 @@ public class MatchScoreController extends HttpServlet {
         MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
         if (finishedMatchesPersistenceService.checkMatchFinished(matchId)) {
             req.getRequestDispatcher("/match-finished-memory.jsp").forward(req, resp);
+            log.info("User tries to get finished match from memory by matchId in url");
         } else {
             req.setAttribute("match", matchInProgressResponse);
             req.getRequestDispatcher("/match.jsp").forward(req, resp);
@@ -56,6 +59,7 @@ public class MatchScoreController extends HttpServlet {
             req.setAttribute("match", matchFinished);
             finishedMatchesPersistenceService.saveMatch(matchId, winner);
             req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);
+            log.info("Match with such an id {} was finished", matchId);
         } else {
             MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(match);
             req.setAttribute("match", matchInProgressResponse);
