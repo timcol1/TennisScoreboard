@@ -7,21 +7,28 @@ html, body {
     box-sizing: border-box;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .wrapper {
     background-color: darkblue;
     display: flex;
-    width: auto;
+    flex-direction: row;
+    justify-content: space-around;
     color: white;
 }
 
 .player {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     min-width: 30%;
 }
 
 .player div {
-    margin: 5px 35px;
+    margin: 10px;
 }
 
 .player h1 {
@@ -35,7 +42,6 @@ html, body {
 .buttons {
     width: 100%;
     display: flex;
-    align-items: flex-end;
 }
 
 .buttons .button_wrapper {
@@ -43,6 +49,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .buttons button {

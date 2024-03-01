@@ -15,42 +15,40 @@ form {
 
 .wrapper {
     background-color: darkgreen;
-    width: auto;
-    min-height: auto;
     display: grid;
     grid-template-columns: 33% 33% 33%;
     margin-top: 0;
 }
+
 .player {
     margin: 5px auto auto auto;
 }
+
 .wrapper div {
     line-height: 40px;
 }
 
 label {
-    font-size: 24px;
+    font-size: 25px;
     color: white;
 }
 
 div p {
-    font-size: 24px;
+    font-size: 25px;
     margin: 0;
     color: white;
 }
-.sign {
+
+.wrapper .sign {
     display: flex;
-    grid-template-columns: 50% 50%;
-}
-.sign div{
-    margin-right: 80px;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
-
-form button {
+button {
     margin-top: 0;
     background-color: blue;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     border-radius: 10px;
 }
