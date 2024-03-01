@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=1000">
 </head>
 <body>
+
 <header class="header">
     <div><img src="../img/tennis_racket.png" alt="tennis racket">
         <h1 class="mint"><a href="http://localhost:8080/main-page">Tennis Scoreboard</a></h1>
@@ -35,7 +36,6 @@
                 <input type="hidden" name="page" value="${page}">
                 <input id="namePlayer" name="filter_by_player_name" type="text" required>
                 <button class="button button-search" type="submit">Search</button>
-                <button class="button button-clear" type="button">Clear</button>
             </form>
         </div>
         <div class="table">
@@ -57,10 +57,21 @@
             </div>
             <div class="table footer">
                 <form method="GET" action="/matches">
-                    <button class="button button-previous" id="butt-prev" name="page" value="${page - 1}">Previous
+
+                    <button class="button button-previous" id="butt-prev" name="page" value="${page - 1}"
+                            <% String pageStr = request.getParameter("page");
+                                if (pageStr != null) {
+                                    int pageCurrent = Integer.parseInt(request.getParameter("page"));
+                                    if (pageCurrent <= 1) { %>
+                            disabled <% }
+                    } else { %>
+                            disabled
+                            <% } %>
+                    >Previous
                     </button>
                     <button class="button button-page" disabled>${page}</button>
-                    <button class="button button-next" id="butt-next" name="page" value="${page + 1}">Next</button>
+                    <button class="button button-next" id="butt-next" name="page" value="${page + 1}"
+                    ${matches.size() < 5 ? "disabled" : "" }>Next</button>
                 </form>
             </div>
         </div>
@@ -76,6 +87,6 @@
         <a href="https://www.linkedin.com/in/timmawv/">Linkedin</a>
     </div>
 </footer>
-<script type="text/javascript" src="${pageContext.request.contextPath}/pages/js/buttonMatchesChecker.js"></script>
+<%--<script type="text/javascript" src="${pageContext.request.contextPath}/pages/js/buttonMatchesChecker.js"></script>--%>
 </body>
 </html>
