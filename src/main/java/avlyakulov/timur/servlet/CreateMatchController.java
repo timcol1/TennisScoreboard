@@ -1,10 +1,6 @@
 package avlyakulov.timur.servlet;
 
-import avlyakulov.timur.model.Match;
-import avlyakulov.timur.model.MatchesInProgress;
-import avlyakulov.timur.model.Player;
 import avlyakulov.timur.service.CreateMatchService;
-import avlyakulov.timur.service.PlayerService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,9 +25,7 @@ public class CreateMatchController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = getServletContext()
-                .getRequestDispatcher("/new-match.jsp");
-        dispatcher.forward(req, resp);
+        req.getRequestDispatcher("/pages/newMatch.jsp").forward(req, resp);
     }
 
     @Override

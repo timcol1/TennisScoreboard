@@ -39,11 +39,11 @@ public class MatchScoreController extends HttpServlet {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
         MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(matchId);
         if (finishedMatchesPersistenceService.checkMatchFinished(matchId)) {
-            req.getRequestDispatcher("/match-finished-memory.jsp").forward(req, resp);
+            req.getRequestDispatcher("/pages/matchFinishedInMemory.jsp").forward(req, resp);
             log.info("User tries to get finished match from memory by matchId in url");
         } else {
             req.setAttribute("match", matchInProgressResponse);
-            req.getRequestDispatcher("/match.jsp").forward(req, resp);
+            req.getRequestDispatcher("/pages/match.jsp").forward(req, resp);
         }
     }
 
@@ -52,7 +52,7 @@ public class MatchScoreController extends HttpServlet {
         UUID matchId = UUID.fromString(req.getParameter("uuid"));
         int winnerId = Integer.parseInt(req.getParameter("winnerId"));
         if (finishedMatchesPersistenceService.checkMatchFinished(matchId)) {
-            req.getRequestDispatcher("/match-finished-memory.jsp").forward(req, resp);
+            req.getRequestDispatcher("/pages/matchFinishedInMemory.jsp").forward(req, resp);
             log.info("User tries to get finished match from memory by matchId in url");
         } else {
             matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
@@ -62,12 +62,12 @@ public class MatchScoreController extends HttpServlet {
                 MatchFinishedResponse matchFinished = matchInProgressService.getFinishedMatchById(match, winner);
                 req.setAttribute("match", matchFinished);
                 finishedMatchesPersistenceService.saveMatch(matchId, winner);
-                req.getRequestDispatcher("/match-finished.jsp").forward(req, resp);
+                req.getRequestDispatcher("/pages/matchFinished.jsp").forward(req, resp);
                 log.info("Match with such an id {} was finished", matchId);
             } else {
                 MatchInProgressResponse matchInProgressResponse = matchInProgressService.getMatchById(match);
                 req.setAttribute("match", matchInProgressResponse);
-                req.getRequestDispatcher("/match.jsp").forward(req, resp);
+                req.getRequestDispatcher("/pages/match.jsp").forward(req, resp);
             }
         }
     }

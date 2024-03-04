@@ -41,7 +41,7 @@ public class MatchesController extends HttpServlet {
             req.setAttribute("page", page);
         }
         req.setAttribute("matches", matches);
-        req.getRequestDispatcher("/matches.jsp").forward(req, resp);
+        req.getRequestDispatcher("/pages/matches.jsp").forward(req, resp);
     }
 
     private boolean isPageStringNotValid(String pageStr) {
