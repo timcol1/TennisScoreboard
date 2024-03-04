@@ -111,11 +111,19 @@ public class MatchScoreCalculationService {
                 }
             }
             case TIE -> {
-                if (match.getPointPlayerOne() == 7) {
+                if (match.getPointPlayerOne() == 7 && match.getPointPlayerTwo() <= 5) {
                     resetPlayersPointsAndGames(match);
                     increasePlayerSet(PlayerNumber.PLAYER_ONE, match);
                     match.setState(State.GAME);
-                } else if (match.getPointPlayerTwo() == 7) {
+                } else if (match.getPointPlayerTwo() == 7 && match.getPointPlayerOne() <= 5) {
+                    resetPlayersPointsAndGames(match);
+                    increasePlayerSet(PlayerNumber.PLAYER_TWO, match);
+                    match.setState(State.GAME);
+                } else if (match.getPointPlayerOne() >= 7 && (match.getPointPlayerOne() - match.getPointPlayerTwo() == 2)) {
+                    resetPlayersPointsAndGames(match);
+                    increasePlayerSet(PlayerNumber.PLAYER_ONE, match);
+                    match.setState(State.GAME);
+                } else if (match.getPointPlayerTwo() >= 7 && (match.getPointPlayerTwo() - match.getPointPlayerOne() == 2)) {
                     resetPlayersPointsAndGames(match);
                     increasePlayerSet(PlayerNumber.PLAYER_TWO, match);
                     match.setState(State.GAME);

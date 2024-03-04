@@ -163,10 +163,50 @@ class MatchScoreCalculationServiceTest {
     }
 
     @Test
-    void addPointToWinnerOfGame_tieBreakPlayerOneWinGame_playerOne6PointPlayerTwo6Point() {
+    void addPointToWinnerOfGame_tieBreakPlayerOneScore1PointGameContinues_playerOne6GamePlayerTwo6Game() {
         int winnerId = 1;
         match.setPointPlayerOne(6);
         match.setPointPlayerTwo(6);
+        match.setGamePlayerOne(6);
+        match.setGamePlayerTwo(6);
+        match.setState(State.TIE);
+
+        matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
+
+        assertEquals(7, match.getPointPlayerOne());
+        assertEquals(6, match.getPointPlayerTwo());
+        assertEquals(6, match.getGamePlayerOne());
+        assertEquals(6, match.getGamePlayerTwo());
+        assertEquals(0, match.getSetPlayerOne());
+        assertEquals(0, match.getSetPlayerTwo());
+        assertEquals(State.TIE, match.getState());
+    }
+
+    @Test
+    void addPointToWinnerOfGame_tieBreakPlayerOneScore1PointWinGame_playerOne6GamePlayerTwo6Game() {
+        int winnerId = 1;
+        match.setPointPlayerOne(9);
+        match.setPointPlayerTwo(8);
+        match.setGamePlayerOne(6);
+        match.setGamePlayerTwo(6);
+        match.setState(State.TIE);
+
+        matchScoreCalculationService.addPointToWinnerOfGame(winnerId, matchId);
+
+        assertEquals(0, match.getPointPlayerOne());
+        assertEquals(0, match.getPointPlayerTwo());
+        assertEquals(0, match.getGamePlayerOne());
+        assertEquals(0, match.getGamePlayerTwo());
+        assertEquals(1, match.getSetPlayerOne());
+        assertEquals(0, match.getSetPlayerTwo());
+        assertEquals(State.GAME, match.getState());
+    }
+
+    @Test
+    void addPointToWinnerOfGame_tieBreakPlayerOneWinGame_playerOne6PointPlayerTwo6Point() {
+        int winnerId = 1;
+        match.setPointPlayerOne(6);
+        match.setPointPlayerTwo(5);
         match.setGamePlayerOne(6);
         match.setGamePlayerOne(6);
         match.setState(State.TIE);
