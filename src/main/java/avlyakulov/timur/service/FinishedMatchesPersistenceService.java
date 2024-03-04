@@ -1,30 +1,21 @@
 package avlyakulov.timur.service;
 
+import avlyakulov.timur.dao.MatchDao;
+import avlyakulov.timur.dao.MatchDaoImpl;
+import avlyakulov.timur.dao.MatchesInProgress;
 import avlyakulov.timur.model.*;
-import avlyakulov.timur.util.HibernateSingletonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.UUID;
 
 @Slf4j
 public class FinishedMatchesPersistenceService {
-    private final SessionFactory sessionFactory;
-
-    public FinishedMatchesPersistenceService() {
-        this.sessionFactory = HibernateSingletonUtil.getSessionFactory();
-    }
-
+    private final MatchDao matchDao = new MatchDaoImpl();
 
     public void saveMatch(UUID matchId, Player winner) {
         Match match = MatchesInProgress.getMatchById(matchId);
-        try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();//открываем транзакцию
-            MatchScoreModel matchFinished = new MatchScoreModel(match.getPlayerOne(), match.getPlayerTwo(), winner);
-            session.persist(matchFinished);
-            session.getTransaction().commit();//закрываем транзакцию
-        }
+        MatchScoreModel matchFinished = new MatchScoreModel(match.getPlayerOne(), match.getPlayerTwo(), winner);
+        matchDao.save(matchFinished);
         deleteMatchFromMemory(matchId);
         log.info("Match with such id {} was deleted from memory", matchId);
     }

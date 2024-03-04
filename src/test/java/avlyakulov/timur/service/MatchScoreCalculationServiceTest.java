@@ -1,7 +1,7 @@
 package avlyakulov.timur.service;
 
 import avlyakulov.timur.model.Match;
-import avlyakulov.timur.model.MatchesInProgress;
+import avlyakulov.timur.dao.MatchesInProgress;
 import avlyakulov.timur.model.Player;
 import avlyakulov.timur.model.State;
 import org.junit.jupiter.api.BeforeEach;

@@ -3,7 +3,7 @@ package avlyakulov.timur.servlet;
 import avlyakulov.timur.dto.MatchFinishedResponse;
 import avlyakulov.timur.dto.MatchInProgressResponse;
 import avlyakulov.timur.model.Match;
-import avlyakulov.timur.model.MatchesInProgress;
+import avlyakulov.timur.dao.MatchesInProgress;
 import avlyakulov.timur.model.Player;
 import avlyakulov.timur.service.FinishedMatchesPersistenceService;
 import avlyakulov.timur.service.MatchInProgressService;

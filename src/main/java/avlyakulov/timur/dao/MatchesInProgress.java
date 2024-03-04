@@ -1,4 +1,6 @@
-package avlyakulov.timur.model;
+package avlyakulov.timur.dao;
+
+import avlyakulov.timur.model.Match;
 
 import java.util.HashMap;
 import java.util.Map;
