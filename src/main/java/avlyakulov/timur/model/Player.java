@@ -25,6 +25,7 @@ public class Player {
     @Column(name = "ID")
     private int id;
 
+    @Column(unique = true)
     private String name;
 
     public Player(String name) {
