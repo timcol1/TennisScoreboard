@@ -37,8 +37,7 @@ public class MatchScoreCalculationService {
             case FINISHED -> {
                 return;
             }
-            default ->
-                    throw new RuntimeException("Something went wrong in addPointToWinnerOfGame() or you in finished state try to add point");
+            default -> throw new RuntimeException("Something went wrong in addPointToWinnerOfGame() or you in finished state try to add point");
         }
         updateGameScore(match);
         updateGameStatus(match);
@@ -61,16 +60,6 @@ public class MatchScoreCalculationService {
         return ++playerPoint;
     }
 
-    private void updateGameStatus(Match match) {
-        if (match.getPointPlayerOne() == 40 && match.getPointPlayerTwo() == 40) {
-            match.setState(State.ADVANTAGE);
-        } else if (match.getGamePlayerOne() == 6 && match.getGamePlayerTwo() == 6) {
-            match.setState(State.TIE);
-        } else if (match.getSetPlayerOne() == 2 || match.getSetPlayerTwo() == 2) {
-            match.setState(State.FINISHED);
-            resetPlayersPointsAndGames(match);
-        }
-    }
 
     private void updateGameScore(Match match) {
         switch (match.getState()) {
@@ -129,6 +118,17 @@ public class MatchScoreCalculationService {
                     match.setState(State.GAME);
                 }
             }
+        }
+    }
+
+    private void updateGameStatus(Match match) {
+        if (match.getPointPlayerOne() == 40 && match.getPointPlayerTwo() == 40) {
+            match.setState(State.ADVANTAGE);
+        } else if (match.getGamePlayerOne() == 6 && match.getGamePlayerTwo() == 6) {
+            match.setState(State.TIE);
+        } else if (match.getSetPlayerOne() == 2 || match.getSetPlayerTwo() == 2) {
+            match.setState(State.FINISHED);
+            resetPlayersPointsAndGames(match);
         }
     }
 
