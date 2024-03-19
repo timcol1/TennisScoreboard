@@ -5,6 +5,8 @@
 `Tennis Scoreboard` - It is MVC Java Servlet App with Unit tests for testing score point in each game.
 It has a view with jsp pages you can start game and look at finished games.
 
+Project from this [course](https://zhukovsd.github.io/java-backend-learning-course/)
+
 ## Project Stack
 
 * Servlets
