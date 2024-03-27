@@ -1,8 +1,8 @@
-<%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.util.Locale" %>
 <%@ page import="java.util.UUID" %>
 <%@ page import="java.time.ZoneId" %>
+<%@ page import="java.time.Instant" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
@@ -25,7 +25,8 @@
     <div><h1 class="mint"><a href="/TennisScoreboard-1.0/matches">Matches</a></h1></div>
     <div><h1 class="mint"><%
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, HH:mm", Locale.ENGLISH);
-        out.print(LocalDateTime.now().atZone(ZoneId.of("Europe/Kiev")).format(formatter));
+        out.print(Instant.ofEpochMilli(System.currentTimeMillis())
+                .atZone(ZoneId.of("Europe/Kiev")).toLocalDateTime().format(formatter));
     %>
     </h1></div>
 </header>
