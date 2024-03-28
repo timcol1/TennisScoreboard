@@ -26,7 +26,6 @@ public class MatchesService {
             Query<MatchScoreModel> hqlFindAllMatches = session.createNamedQuery("HQL_FindAllMatches", MatchScoreModel.class)
                     .setFirstResult(0)
                     .setMaxResults(matchesPerPage);
-
             return MatchMapper.INSTANCE.mapToListMatchScoreModelResponse(hqlFindAllMatches.list());
         }
     }
