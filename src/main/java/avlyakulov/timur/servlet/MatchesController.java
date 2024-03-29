@@ -24,35 +24,25 @@ public class MatchesController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pageStr = req.getParameter("page");
         String playerName = req.getParameter("filter_by_player_name");
-        List<MatchScoreModelResponse> matches;
-        if (isPageStringNotValid(pageStr) && playerName == null) {
-            matches = matchesService.getMatchesByOffsetAndLimit();
-            req.setAttribute("page", 1);
-        } else if (!isPageStringNotValid(pageStr) && playerName == null) {
-            int page = validatePageNumber(Integer.parseInt(pageStr));
-            matches = matchesService.getMatchesByOffsetAndLimit(page);
-            req.setAttribute("page", page);
-        } else if (isPageStringNotValid(pageStr) && playerName != null) {
-            matches = matchesService.getMatchesByOffsetAndLimitAndName(1, playerName);
-            req.setAttribute("page", 1);
-        } else {
-            int page = validatePageNumber(Integer.parseInt(pageStr));
-            matches = matchesService.getMatchesByOffsetAndLimitAndName(page, playerName);
-            req.setAttribute("page", page);
-        }
+        Integer page = validateAndParsePage(pageStr, req);
+        List<MatchScoreModelResponse> matches = matchesService.getMatches(page, playerName);
         req.setAttribute("matches", matches);
         req.getRequestDispatcher("/pages/matches.jsp").forward(req, resp);
     }
 
-    private boolean isPageStringNotValid(String pageStr) {
-        if (pageStr == null || pageStr.isBlank() || !pageStr.matches("[0-9]?[0-9]")) {
-            return true;
+    private Integer validateAndParsePage(String pageStr, HttpServletRequest req) {
+        if (pageStr != null && !pageStr.isBlank() && pageStr.matches("[0-9]?[0-9]")) {
+            int page = Integer.parseInt(pageStr);
+            Integer pageValidated = validatePageNumber(page);
+            req.setAttribute("page", pageValidated);
+            return pageValidated;
         } else {
-            return false;
+            req.setAttribute("page", 1);
+            return 1;
         }
     }
 
-    private int validatePageNumber(int pageNumber) {
+    private Integer validatePageNumber(int pageNumber) {
         return pageNumber < 1 ? 1 : pageNumber;
     }
 }
