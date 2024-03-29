@@ -1,6 +1,7 @@
 package avlyakulov.timur.servlet;
 
 import avlyakulov.timur.dto.MatchScoreModelResponse;
+import avlyakulov.timur.service.MatchPagesService;
 import avlyakulov.timur.service.MatchesService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -27,6 +28,7 @@ public class MatchesController extends HttpServlet {
         Integer page = validateAndParsePage(pageStr, req);
         List<MatchScoreModelResponse> matches = matchesService.getMatches(page, playerName);
         req.setAttribute("matches", matches);
+        req.setAttribute("pages", MatchPagesService.getNumberOfMatchPages());
         req.getRequestDispatcher("/pages/matches.jsp").forward(req, resp);
     }
 

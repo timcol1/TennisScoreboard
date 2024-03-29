@@ -6,4 +6,5 @@ public interface MatchDao {
 
     void save(MatchScoreModel matchScoreModel);
 
+    long getNumberMatches();
 }

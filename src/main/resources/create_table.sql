@@ -33,7 +33,6 @@ VALUES (1, 2, 1),
        (2, 5, 5),
        (1, 5, 1),
        (1, 2, 1),
-       (1, 3, 3),
        (2, 3, 3);
 
 CREATE INDEX index_player_name ON Players (Name);

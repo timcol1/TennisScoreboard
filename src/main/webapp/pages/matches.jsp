@@ -17,7 +17,8 @@
 <body>
 
 <header class="header">
-    <div><img src="https://cdn.icon-icons.com/icons2/3664/PNG/512/tennis_racket_ball_sport_game_icon_228593.png" alt="tennis racket">
+    <div><img src="https://cdn.icon-icons.com/icons2/3664/PNG/512/tennis_racket_ball_sport_game_icon_228593.png"
+              alt="tennis racket">
         <h1 class="mint"><a href="/TennisScoreboard-1.0/main-page">Tennis Scoreboard</a></h1>
     </div>
     <div><h1 class="mint"><a href="/TennisScoreboard-1.0/new-match">New Match</a></h1></div>
@@ -73,10 +74,12 @@
                     } else { %>
                             disabled
                             <% } %>
-                    >Previous </button>
-                    <button class="button button-page" disabled>${page}</button>
+                    >Previous
+                    </button>
+                    <button class="button button-page" disabled>${page} / ${pages}</button>
                     <button class="button button-next" id="butt-next" name="page" value="${page + 1}"
-                    ${matches.size() < 5 ? "disabled" : "" }>Next</button>
+                    ${page == pages ? "disabled" : ""}>Next
+                    </button>
                 </form>
             </div>
         </div>

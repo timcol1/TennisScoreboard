@@ -21,6 +21,7 @@ public class MatchesService {
     private SessionFactory sessionFactory;
 
     private final int matchesPerPage = 5;
+    private final double matchesPerPageDouble = 5.0;
 
     public MatchesService() {
         this.sessionFactory = HibernateSingletonUtil.getSessionFactory();
@@ -50,5 +51,10 @@ public class MatchesService {
                     .getResultList();
             return MatchMapper.INSTANCE.mapToListMatchScoreModelResponse(matches);
         }
+    }
+
+    public int getPagesOfMatches(List<MatchScoreModelResponse> matches) {
+        double number = matches.size() / matchesPerPageDouble;
+        return (int) Math.ceil(number);
     }
 }
