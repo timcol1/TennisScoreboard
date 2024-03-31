@@ -11,10 +11,13 @@ Project from this [course](https://zhukovsd.github.io/java-backend-learning-cour
 
 * Servlets
 * Java EE
+* Docker
+* Docker compose
 * H2
 * Slf4j
 * JUnit 5
 * Hibernate
+* Criteria API
 * JSP
 
 ## Program in action  

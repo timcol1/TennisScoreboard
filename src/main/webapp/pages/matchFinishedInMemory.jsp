@@ -1,6 +1,6 @@
 <%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="java.time.LocalDateTime" %>
-<%@ page import="java.util.Locale" %><%--
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.time.ZoneId" %><%--
   Created by IntelliJ IDEA.
   User: Timur
   Date: 28.02.2024
@@ -27,7 +27,8 @@
     <div><h1 class="mint"><a href="/TennisScoreboard-1.0/matches">Matches</a></h1></div>
     <div><h1 class="mint"><%
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, HH:mm", Locale.ENGLISH);
-        out.print(LocalDateTime.now().format(formatter));
+        out.print(Instant.ofEpochMilli(System.currentTimeMillis())
+                .atZone(ZoneId.of("Europe/Kiev")).toLocalDateTime().format(formatter));
     %>
     </h1></div>
 </header>

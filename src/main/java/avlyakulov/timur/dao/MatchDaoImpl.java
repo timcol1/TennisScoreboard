@@ -9,7 +9,6 @@ public class MatchDaoImpl implements MatchDao {
 
     private final SessionFactory sessionFactory = HibernateSingletonUtil.getSessionFactory();
 
-
     @Override
     public void save(MatchScoreModel matchScoreModel) {
         try (Session session = sessionFactory.openSession()) {
@@ -21,5 +20,10 @@ public class MatchDaoImpl implements MatchDao {
         }
     }
 
-
+    public long getNumberMatches() {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("select count(*) from MatchScoreModel", Long.class)
+                    .getSingleResult();
+        }
+    }
 }

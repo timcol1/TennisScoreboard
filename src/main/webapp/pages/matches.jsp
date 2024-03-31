@@ -1,6 +1,7 @@
 <%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.util.Locale" %>
+<%@ page import="java.time.ZoneId" %>
+<%@ page import="java.time.Instant" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -16,14 +17,16 @@
 <body>
 
 <header class="header">
-    <div><img src="https://cdn.icon-icons.com/icons2/3664/PNG/512/tennis_racket_ball_sport_game_icon_228593.png" alt="tennis racket">
+    <div><img src="https://cdn.icon-icons.com/icons2/3664/PNG/512/tennis_racket_ball_sport_game_icon_228593.png"
+              alt="tennis racket">
         <h1 class="mint"><a href="/TennisScoreboard-1.0/main-page">Tennis Scoreboard</a></h1>
     </div>
     <div><h1 class="mint"><a href="/TennisScoreboard-1.0/new-match">New Match</a></h1></div>
     <div><h1 class="mint"><a href="/TennisScoreboard-1.0/matches">Matches</a></h1></div>
     <div><h1 class="mint"><%
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, HH:mm", Locale.ENGLISH);
-        out.print(LocalDateTime.now().format(formatter));
+        out.print(Instant.ofEpochMilli(System.currentTimeMillis())
+                .atZone(ZoneId.of("Europe/Kiev")).toLocalDateTime().format(formatter));
     %>
     </h1></div>
 </header>
@@ -71,10 +74,12 @@
                     } else { %>
                             disabled
                             <% } %>
-                    >Previous </button>
-                    <button class="button button-page" disabled>${page}</button>
+                    >Previous
+                    </button>
+                    <button class="button button-page" disabled>${page} / ${pages}</button>
                     <button class="button button-next" id="butt-next" name="page" value="${page + 1}"
-                    ${matches.size() < 5 ? "disabled" : "" }>Next</button>
+                    ${page == pages ? "disabled" : ""}>Next
+                    </button>
                 </form>
             </div>
         </div>
