@@ -1,6 +1,5 @@
 package avlyakulov.timur.dao;
 
-import avlyakulov.timur.model.Match;
 import avlyakulov.timur.model.MatchScoreModel;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;

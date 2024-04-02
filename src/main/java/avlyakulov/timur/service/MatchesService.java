@@ -8,7 +8,6 @@ import avlyakulov.timur.model.MatchScoreModel;
 import avlyakulov.timur.util.CapitalizeFirstLetter;
 
 import java.util.List;
-import java.util.Optional;
 
 public class MatchesService {
 

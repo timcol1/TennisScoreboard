@@ -16,9 +16,6 @@ import lombok.Setter;
         @NamedQuery(name = "HQL_FindAllMatchesByPlayerName",
                 query = "from MatchScoreModel m left join fetch m.playerOne left join fetch m.playerTwo left join fetch m.winner " +
                         "where m.playerOne.name = :name or m.playerTwo.name = :name order by m.id")
-//        @NamedQuery(name = "HQL_CountAllMatchesByPlayerName",
-//                query = "select count(*) from MatchScoreModel m left join fetch m.playerOne  left join fetch m.playerTwo left join fetch m.winner " +
-//                        "where m.playerOne.name = :name or m.playerTwo.name = :name order by m.id")
 })
 public class MatchScoreModel {
 
