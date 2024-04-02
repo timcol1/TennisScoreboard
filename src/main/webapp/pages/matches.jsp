@@ -78,7 +78,7 @@
                     </button>
                     <button class="button button-page" disabled>${page} / ${pages}</button>
                     <button class="button button-next" id="butt-next" name="page" value="${page + 1}"
-                    ${page == pages ? "disabled" : ""}>Next
+                    ${page >= pages ? "disabled" : ""}>Next
                     </button>
                 </form>
             </div>
@@ -95,6 +95,5 @@
         <a href="https://www.linkedin.com/in/timmawv/">Linkedin</a>
     </div>
 </footer>
-<%--<script type="text/javascript" src="${pageContext.request.contextPath}/pages/js/buttonMatchesChecker.js"></script>--%>
 </body>
 </html>

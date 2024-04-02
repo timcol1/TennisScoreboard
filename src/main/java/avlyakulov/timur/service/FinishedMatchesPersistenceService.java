@@ -16,7 +16,6 @@ public class FinishedMatchesPersistenceService {
         Match match = MatchesInProgress.getMatchById(matchId);
         MatchScoreModel matchFinished = new MatchScoreModel(match.getPlayerOne(), match.getPlayerTwo(), winner);
         matchDao.save(matchFinished);
-        MatchPagesService.updateNumberMatchesPages();
         deleteMatchFromMemory(matchId);
         log.info("Match with such id {} was deleted from memory", matchId);
     }

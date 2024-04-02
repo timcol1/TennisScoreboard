@@ -1,7 +1,6 @@
 package avlyakulov.timur.servlet;
 
 import avlyakulov.timur.dto.MatchScoreModelResponse;
-import avlyakulov.timur.service.MatchPagesService;
 import avlyakulov.timur.service.MatchesService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet(urlPatterns = "/matches")
 public class MatchesController extends HttpServlet {
@@ -28,7 +28,7 @@ public class MatchesController extends HttpServlet {
         Integer page = validateAndParsePage(pageStr, req);
         List<MatchScoreModelResponse> matches = matchesService.getMatches(page, playerName);
         req.setAttribute("matches", matches);
-        req.setAttribute("pages", MatchPagesService.getNumberOfMatchPages());
+        req.setAttribute("pages", matchesService.getPagesOfMatches(playerName));
         req.getRequestDispatcher("/pages/matches.jsp").forward(req, resp);
     }
 
